@@ -1,9 +1,9 @@
-function Card({cardTheme, taskName, taskDate}){
+function Card({theme, title, date}){
     return (<div className="cards__item">
         <div className="cards__card card">
             <div className="card__group">
                 <div className="card__theme _green">
-                    <p className="_green">{cardTheme}</p>
+                    <p className="_green">{theme}</p>
                 </div>
                 <a href="#popBrowse" target="_self">
                     <div className="card__btn">
@@ -15,7 +15,7 @@ function Card({cardTheme, taskName, taskDate}){
             </div>
             <div className="card__content">
                 <a href="" target="_blank">
-                    <h3 className="card__title">{taskName}</h3>
+                    <h3 className="card__title">{title}</h3>
                 </a>
                 <div className="card__date">
                     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
@@ -36,7 +36,7 @@ function Card({cardTheme, taskName, taskDate}){
                             </clipPath>
                         </defs>
                     </svg>
-                    <p>{taskDate}</p>
+                    <p>{date}</p>
                 </div>
             </div>
         </div>
