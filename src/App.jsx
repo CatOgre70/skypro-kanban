@@ -18,8 +18,6 @@ function App() {
               <Main />
 
           </div>
-
-          <script src="js/script.js"></script>
       </>
   )
 }
