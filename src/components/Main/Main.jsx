@@ -1,7 +1,7 @@
 import Column from "../Column/Column.jsx";
-import {cardList, statusList} from "../../data.js";
+import {statusList} from "../../data.js";
 
-function Main() {
+function Main({cards}) {
     return (<main className="main">
         <div className="container">
             <div className="main__block">
@@ -10,7 +10,7 @@ function Main() {
                             <Column
                                 key={status}
                                 columnTitle={status}
-                                cardList={cardList.filter((card) => card.status === status)}
+                                cardList={cards.filter((card) => card.status === status)}
                             />
                     ))}
                 </div>

@@ -2,42 +2,42 @@ export const cardList = [
     {
         id: 1,
         theme: "Web Design",
-        title: "Название задачи",
+        title: "Создать дизайн сайта 'История семьи'",
         date: "30.10.23",
         status: "Без статуса"
     },
     {
         id: 2,
         theme: "Research",
-        title: "Новая задача",
+        title: "Определить возможный спрос на услуги сайта 'История семьи'",
         date: "30.10.23",
         status: "Без статуса"
     },
     {
         id: 3,
         theme: "Web Design",
-        title: "Название задачи",
+        title: "Нарисовать макет лэндинга",
         date: "30.10.23",
         status: "Нужно сделать"
     },
     {
         id: 4,
         theme: "Research",
-        title: "Название задачи",
+        title: "Определить возмужную стоимость подписки на услуги сайта",
         date: "15.12.23",
         status: "Нужно сделать"
     },
     {
         id: 5,
         theme: "Copywriting",
-        title: "Название задачи",
+        title: "Попросить авторов написать рекламу сайта",
         date: "4.11.23",
         status: "Нужно сделать"
     },
     {
         id: 6,
         theme: "Research",
-        title: "Название задачи",
+        title: "Понять на каких ресурсах мы будем размещать рекламу",
         date: "12.01.24",
         status: "В работе"
     },
@@ -84,4 +84,10 @@ export const statusList = [
     "В работе",
     "Тестирование",
     "Готово",
+];
+
+export const themeList = [
+    "Web Design",
+    "Copywriting",
+    "Research"
 ];
