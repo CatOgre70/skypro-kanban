@@ -85,9 +85,3 @@ export const statusList = [
     "Тестирование",
     "Готово",
 ];
-
-export const themeList = [
-    "Web Design",
-    "Copywriting",
-    "Research"
-];

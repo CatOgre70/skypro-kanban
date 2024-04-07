@@ -1,10 +1,12 @@
+import {CardTheme, getThemeStyle, ThemeText} from "../../lib/theme.js";
+
 function Card({theme, title, date}){
     return (<div className="cards__item">
         <div className="cards__card card">
             <div className="card__group">
-                <div className="card__theme _green">
-                    <p className="_green">{theme}</p>
-                </div>
+                <CardTheme $themeColor={getThemeStyle(theme)}>
+                    <ThemeText>{theme}</ThemeText>
+                </CardTheme>
                 <a href="#popBrowse" target="_self">
                     <div className="card__btn">
                         <div></div>
