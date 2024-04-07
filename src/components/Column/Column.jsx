@@ -1,13 +1,17 @@
 import Card from "../Card/Card.jsx";
 
-function Column({columnTitle, card}) {
+function Column({columnTitle, cardList}) {
 
     return(<div className="main__column">
                 <div className="column__title">
                     <p>{columnTitle}</p>
                 </div>
                 <div className="cards">
-                    <Card cardTheme={card.taskTheme} taskName={card.taskName} taskDate={card.taskDate}/>
+                    {
+                        cardList.map((card) => (
+                            <Card theme={card.theme} title={card.title} date={card.date} key={card.id} />
+                        ))
+                    }
                 </div>
             </div>);
 }

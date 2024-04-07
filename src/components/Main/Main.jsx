@@ -1,40 +1,34 @@
 import Column from "../Column/Column.jsx";
+import {statusList} from "../../data.js";
+import {useEffect, useState} from "react";
 
-function Main() {
-    const readyCard = {
-        taskTheme: 'Research',
-        taskName: 'Название задачи',
-        taskDate: '30.10.23'
-    };
-    const testingCard = {
-        taskTheme: 'Research',
-        taskName: 'Название задачи',
-        taskDate: '30.10.23'
-    };
-    const inTheProcessCard = {
-            taskTheme: 'Copywriting',
-            taskName: 'Название задачи',
-            taskDate: '30.10.23'
-    };
-    const toDoCard = {
-            taskTheme: 'Research',
-            taskName: 'Название задачи',
-            taskDate: '30.10.23'
-    };
-    const withoutStatusCard = {
-            taskTheme: 'Web Design',
-            taskName: 'Название задачи',
-            taskDate: '30.10.23'
-    };
+
+function Main({cards}) {
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000); // 2 секунды задержки
+
+    }, []);
+
+
     return (<main className="main">
         <div className="container">
             <div className="main__block">
                 <div className="main__content">
-                    <Column columnTitle={'Без статуса'} card={withoutStatusCard} />
-                    <Column columnTitle={'Нужно сделать'} card={toDoCard} />
-                    <Column columnTitle={'В работе'} card={inTheProcessCard} />
-                    <Column columnTitle={'Тестирование'} card={testingCard} />
-                    <Column columnTitle={'Готово'} card={readyCard}/>
+                    {
+                        isLoading ? (<div>Данные загружаются</div>) :
+                            ( statusList.map((status) => (
+                                <Column
+                                    key={status}
+                                    columnTitle={status}
+                                    cardList={cards.filter((card) => card.status === status)}
+                                />
+                            )))
+                    }
                 </div>
 
             </div>
