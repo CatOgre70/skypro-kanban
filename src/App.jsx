@@ -1,11 +1,18 @@
 import './App.css'
-import PopNewCard from "./components/PopNewCard/PopNewCard.jsx";
+import PopNewCard from "./components/popups/PopNewCard/PopNewCard.jsx";
 import PopExit from "./components/popups/PopExit/PopExit.jsx";
-import PopBrowse from "./components/PopBrowse/PopBrowse.jsx";
+import PopBrowse from "./components/popups/PopBrowse/PopBrowse.jsx";
 import Header from "./components/Header/Header.jsx";
 import Main from "./components/Main/Main.jsx";
 import {useState} from "react";
 import {cardList} from "./data.js";
+
+export const AppRoutes = {
+    HOME: "/",
+    LOGIN: "/login",
+    REGISTER: "/register",
+    NOT_FOUND: "*",
+}
 
 function App() {
 

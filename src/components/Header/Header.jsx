@@ -1,4 +1,4 @@
-import PopUser from "../PopUser/PopUser.jsx";
+import PopUser from "../popups/PopUser/PopUser.jsx";
 
 function Header({onCardAdd}) {
     return (<header className="header">

@@ -1,4 +1,4 @@
-import Calendar from "../Calendar/Calendar.jsx";
+import Calendar from "../../Calendar/Calendar.jsx";
 
 function PopBrowse() {
     return (<div className="pop-browse" id="popBrowse">
