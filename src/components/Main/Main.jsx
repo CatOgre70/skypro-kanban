@@ -1,6 +1,7 @@
 import Column from "../Column/Column.jsx";
 import {statusList} from "../../data.js";
 import {useEffect, useState} from "react";
+import {ContainerStyled, DataIsLoading, MainBlock, MainContent, MainStyled} from "./Main.styled.js";
 
 
 function Main({cards}) {
@@ -15,25 +16,26 @@ function Main({cards}) {
     }, []);
 
 
-    return (<main className="main">
-        <div className="container">
-            <div className="main__block">
-                <div className="main__content">
-                    {
-                        isLoading ? (<div>Данные загружаются</div>) :
-                            ( statusList.map((status) => (
-                                <Column
-                                    key={status}
-                                    columnTitle={status}
-                                    cardList={cards.filter((card) => card.status === status)}
-                                />
-                            )))
-                    }
-                </div>
-
-            </div>
-        </div>
-    </main>);
+    return (
+        <MainStyled>
+            <ContainerStyled>
+                <MainBlock>
+                    <MainContent>
+                        {
+                            isLoading ? (<DataIsLoading>Данные загружаются</DataIsLoading>) :
+                                ( statusList.map((status) => (
+                                    <Column
+                                        key={status}
+                                        columnTitle={status}
+                                        cardList={cards.filter((card) => card.status === status)}
+                                    />
+                                )))
+                        }
+                    </MainContent>
+                </MainBlock>
+            </ContainerStyled>
+        </MainStyled>
+    );
 }
 
 export default Main;
