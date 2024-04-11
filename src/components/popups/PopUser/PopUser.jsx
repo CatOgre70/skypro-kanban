@@ -1,4 +1,11 @@
 import {useState} from "react";
+import {
+    HeaderPopUserSet,
+    HeaderUserHover02, PopUserSetButton,
+    PopUserSetMail,
+    PopUserSetName,
+    PopUserSetTheme, PopUserSetThemeInput, PopUserSetThemeP
+} from "./PopUser.styled.js";
 
 function PopUser() {
 
@@ -10,17 +17,17 @@ function PopUser() {
 
     return(
         <div>
-            <a href="#user-set-target" className="header__user _hover02" onClick={onClick}>Ivan Ivanov</a>
+            <HeaderUserHover02 href="#user-set-target" onClick={onClick}>Ivan Ivanov</HeaderUserHover02>
             { isVisible && (
-                    <div className="header__pop-user-set pop-user-set" id="user-set-target">
-                        <p className="pop-user-set__name">Ivan Ivanov</p>
-                        <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-                        <div className="pop-user-set__theme">
-                            <p>Темная тема</p>
-                            <input type="checkbox" className="checkbox" name="checkbox"/>
-                        </div>
-                        <button type="button" className="_hover03"><a href="#popExit">Выйти</a></button>
-                    </div>
+                    <HeaderPopUserSet id="user-set-target">
+                        <PopUserSetName>Ivan Ivanov</PopUserSetName>
+                        <PopUserSetMail>ivan.ivanov@gmail.com</PopUserSetMail>
+                        <PopUserSetTheme>
+                            <PopUserSetThemeP>Темная тема</PopUserSetThemeP>
+                            <PopUserSetThemeInput type="checkbox" name="checkbox"/>
+                        </PopUserSetTheme>
+                        <PopUserSetButton type="button"><a href="#popExit">Выйти</a></PopUserSetButton>
+                    </HeaderPopUserSet>
                 )
             }
         </div>
