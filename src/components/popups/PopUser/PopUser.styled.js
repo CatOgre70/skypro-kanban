@@ -9,14 +9,14 @@ export const HeaderUserHover02 = styled.a`
     font-size: 14px;
     line-height: 20px;
     color: #565EEF;
-    :hover {
+    &:hover {
         color: #33399b;
-        ::after {
+        &::after {
             border-left-color: #33399b;
             border-bottom-color: #33399b;
         }
     }
-    ::after {
+    &::after {
         content: "";
         display: block;
         width: 6px;
@@ -27,7 +27,6 @@ export const HeaderUserHover02 = styled.a`
         transform: rotate(-45deg);
         margin: -6px 0 0 5px;
         padding: 0;
-
     }
 `;
 
@@ -96,7 +95,7 @@ export const PopUserSetThemeInput = styled.input`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    ::before {
+    &::before {
         content: "";
         position: absolute;
         top: 1px;
@@ -107,7 +106,7 @@ export const PopUserSetThemeInput = styled.input`
         background-color: #94A6BE;
         transition: 0.5s;
     }
-    :checked::before {
+    &:checked::before {
         left: 12px;
     }
 `;
@@ -122,11 +121,11 @@ export const PopUserSetButton = styled.button`
     a {
         color: #565EEF;
     }
-    :hover {
+    &:hover {
         background-color: #33399b;
         color: #FFFFFF;
     }
-    :hover a {
+    &:hover a {
         color: #FFFFFF;
     }
 `;

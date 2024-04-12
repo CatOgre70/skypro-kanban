@@ -56,11 +56,10 @@ export const HeaderBtnMainNewHover01 = styled.button`
     line-height: 1;
     font-weight: 500;
     margin-right: 20px;
-    :hover {
+    &:hover {
         background-color: #33399b;
     }
-`;
-
-export const HeaderBtnMainNewA = styled(HeaderBtnMainNewHover01)`
-    color: #FFFFFF;
+    a {
+        color: #FFFFFF;    
+    }
 `;

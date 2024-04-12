@@ -1,6 +1,6 @@
 import PopUser from "../popups/PopUser/PopUser.jsx";
 import {
-    HeaderBlock, HeaderBtnMainNewA,
+    HeaderBlock,
     HeaderBtnMainNewHover01,
     HeaderContainer,
     HeaderLogoDark,
@@ -21,7 +21,7 @@ const Header = ({onCardAdd}) => (
                 </HeaderLogoDark>
                 <HeaderNav>
                     <HeaderBtnMainNewHover01 id="btnMainNew" onClick={onCardAdd}>
-                        <HeaderBtnMainNewA>Создать новую задачу</HeaderBtnMainNewA>
+                        <a>Создать новую задачу</a>
                     </HeaderBtnMainNewHover01>
                     <PopUser />
                 </HeaderNav>

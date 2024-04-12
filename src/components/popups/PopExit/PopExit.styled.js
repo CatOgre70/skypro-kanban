@@ -72,7 +72,7 @@ export const PopExitExitYes = styled.button`
     letter-spacing: -0.14px;
     color: #FFFFFF;
     margin-right: 10px;
-    :hover {
+    &:hover {
         background-color: #33399b;
     }
     a {
@@ -100,7 +100,7 @@ export const PopExitExitNo = styled.button`
     font-weight: 500;
     letter-spacing: -0.14px;
     color: #FFFFFF;
-    :hover {
+    &:hover {
         background-color: #33399b;
         color: #FFFFFF;
     }

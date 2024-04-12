@@ -57,7 +57,7 @@ export const ModalInput = styled.input`
     border: 0.7px solid rgba(148, 166, 190, 0.4);
     outline: none;
     padding: 10px 8px;
-    ::-moz-placeholder {
+    &::-moz-placeholder {
         font-family: "Roboto", sans-serif;
         font-weight: 400;
         font-size: 14px;
@@ -65,7 +65,7 @@ export const ModalInput = styled.input`
         letter-spacing: -0.28px;
         color: #94A6BE;
     }
-    ::placeholder {
+    &::placeholder {
         font-family: "Roboto", sans-serif;
         font-weight: 400;
         font-size: 14px;
@@ -100,7 +100,7 @@ export const ModalBtnSignupEnter = styled.button`
         align-items: center;
         justify-content: center;
     }
-    :hover {
+    &:hover {
         background-color: #33399b;
     }
 `;
