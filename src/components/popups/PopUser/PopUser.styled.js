@@ -122,7 +122,7 @@ export const PopUserSetButton = styled.button`
     a {
         color: #565EEF;
     }
-    :hover{
+    :hover {
         background-color: #33399b;
         color: #FFFFFF;
     }
