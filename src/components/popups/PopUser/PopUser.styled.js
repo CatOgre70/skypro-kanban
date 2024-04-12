@@ -44,6 +44,9 @@ export const HeaderPopUserSet = styled.div`
     padding: 34px;
     text-align: center;
     z-index: 2;
+    &:target {
+        display: block;
+    }
 `;
 
 export const PopUserSetName = styled.p`
@@ -68,46 +71,36 @@ export const PopUserSetTheme = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 30px;
-`;
-
-export const PopUserSetThemeP = styled.p`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    color: #000;
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: -0.14px;
-`;
-
-export const PopUserSetThemeInput = styled.input`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    position: relative;
-    width: 24px;
-    height: 13px;
-    border-radius: 100px;
-    background: #EAEEF6;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    &::before {
-        content: "";
-        position: absolute;
-        top: 1px;
-        left: 1px;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        background-color: #94A6BE;
-        transition: 0.5s;
+    p {
+        color: #000;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: -0.14px;    
     }
-    &:checked::before {
-        left: 12px;
+    input[type=checkbox] {
+        position: relative;
+        width: 24px;
+        height: 13px;
+        border-radius: 100px;
+        background: #EAEEF6;
+        outline: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background-color: #94A6BE;
+            transition: 0.5s;
+        }
+        &:checked::before {
+            left: 12px;
+        }
     }
 `;
 

@@ -4,7 +4,7 @@ import {
     HeaderUserHover02, PopUserSetButton,
     PopUserSetMail,
     PopUserSetName,
-    PopUserSetTheme, PopUserSetThemeInput, PopUserSetThemeP
+    PopUserSetTheme
 } from "./PopUser.styled.js";
 
 function PopUser() {
@@ -23,8 +23,8 @@ function PopUser() {
                         <PopUserSetName>Ivan Ivanov</PopUserSetName>
                         <PopUserSetMail>ivan.ivanov@gmail.com</PopUserSetMail>
                         <PopUserSetTheme>
-                            <PopUserSetThemeP>Темная тема</PopUserSetThemeP>
-                            <PopUserSetThemeInput type="checkbox" name="checkbox"/>
+                            <p>Темная тема</p>
+                            <input type="checkbox" name="checkbox"/>
                         </PopUserSetTheme>
                         <PopUserSetButton type="button"><a href="#popExit">Выйти</a></PopUserSetButton>
                     </HeaderPopUserSet>
