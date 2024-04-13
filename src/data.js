@@ -23,7 +23,7 @@ export const cardList = [
     {
         id: 4,
         theme: "Research",
-        title: "Определить возмужную стоимость подписки на услуги сайта",
+        title: "Определить возможную стоимость подписки на услуги сайта",
         date: "15.12.23",
         status: "Нужно сделать"
     },
@@ -86,8 +86,14 @@ export const statusList = [
     "Готово",
 ];
 
-export const themeList = [
-    "Web Design",
-    "Copywriting",
-    "Research"
-];
+export const isAuth = false;
+
+export const AppRoutes = {
+    HOME: "/",
+    LOGIN: "/login",
+    LOGOUT: "/logout",
+    REGISTER: "/register",
+    ADD_NEW_CARD: "/addnewcard",
+    EDIT_CARD: "/editcard/:cardId",
+    NOT_FOUND: "*",
+}

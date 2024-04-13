@@ -1,24 +1,36 @@
-function Card({theme, title, date}){
-    return (<div className="cards__item">
-        <div className="cards__card card">
-            <div className="card__group">
-                <div className="card__theme _green">
-                    <p className="_green">{theme}</p>
-                </div>
+import {CardTheme, getThemeStyle, ThemeText} from "./CardTheme.styled.js";
+import {
+    CardBtn, CardBtnDiv,
+    CardContent,
+    CardDate,
+    CardDateImage, CardDateParagraph,
+    CardGroup,
+    CardsCard,
+    CardsItem,
+    CardTitle
+} from "./Card.styled.js";
+
+const Card = ({theme, title, date}) => (
+    <CardsItem>
+        <CardsCard>
+            <CardGroup>
+                <CardTheme $themeColor={getThemeStyle(theme)}>
+                    <ThemeText>{theme}</ThemeText>
+                </CardTheme>
                 <a href="#popBrowse" target="_self">
-                    <div className="card__btn">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+                    <CardBtn>
+                        <CardBtnDiv></CardBtnDiv>
+                        <CardBtnDiv></CardBtnDiv>
+                        <CardBtnDiv></CardBtnDiv>
+                    </CardBtn>
                 </a>
-            </div>
-            <div className="card__content">
+            </CardGroup>
+            <CardContent>
                 <a href="" target="_blank">
-                    <h3 className="card__title">{title}</h3>
+                    <CardTitle>{title}</CardTitle>
                 </a>
-                <div className="card__date">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+                <CardDate>
+                    <CardDateImage xmlns="http://www.w3.org/2000/svg" width="13" height="13"
                          viewBox="0 0 13 13" fill="none">
                         <g clipPath="url(#clip0_1_415)">
                             <path
@@ -35,12 +47,13 @@ function Card({theme, title, date}){
                                 <rect width="13" height="13" fill="white"/>
                             </clipPath>
                         </defs>
-                    </svg>
-                    <p>{date}</p>
-                </div>
-            </div>
-        </div>
-    </div>);
-}
+                    </CardDateImage>
+                    <CardDateParagraph>{date}</CardDateParagraph>
+                </CardDate>
+            </CardContent>
+        </CardsCard>
+    </CardsItem>
+);
+
 
 export default Card;

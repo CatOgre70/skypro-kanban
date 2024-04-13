@@ -1,24 +1,33 @@
-import PopUser from "../PopUser/PopUser.jsx";
+import PopUser from "../popups/PopUser/PopUser.jsx";
+import {
+    HeaderBlock,
+    HeaderBtnMainNewHover01,
+    HeaderContainer,
+    HeaderLogoDark,
+    HeaderLogoImg,
+    HeaderNav,
+    HeaderStyled
+} from "./Header.styled.js";
 
-function Header({onCardAdd}) {
-    return (<header className="header">
-                  <div className="container">
-                      <div className="header__block">
-                          <div className="header__logo _show _light">
-                              <a href="" target="_self"><img src="/logo.png" alt="logo"/></a>
-                          </div>
-                          <div className="header__logo _dark">
-                              <a href="" target="_self"><img src="/logo_dark.png" alt="logo"/></a>
-                          </div>
-                          <nav className="header__nav">
-                              <button className="header__btn-main-new _hover01" id="btnMainNew" onClick={onCardAdd}>
-                                  <a>Создать новую задачу</a>
-                              </button>
-                              <PopUser />
-                          </nav>
-                      </div>
-                  </div>
-              </header>);
-}
+const Header = ({onCardAdd}) => (
+    <HeaderStyled>
+        <HeaderContainer>
+            <HeaderBlock>
+                <div className="header__logo _show _light">
+                    <a href="" target="_self"><HeaderLogoImg src="/logo.png" alt="logo"/></a>
+                </div>
+                <HeaderLogoDark>
+                    <a href="" target="_self"><HeaderLogoImg src="/logo_dark.png" alt="logo"/></a>
+                </HeaderLogoDark>
+                <HeaderNav>
+                    <HeaderBtnMainNewHover01 id="btnMainNew" onClick={onCardAdd}>
+                        <a>Создать новую задачу</a>
+                    </HeaderBtnMainNewHover01>
+                    <PopUser />
+                </HeaderNav>
+            </HeaderBlock>
+        </HeaderContainer>
+    </HeaderStyled>
+)
 
 export default Header;
