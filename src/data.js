@@ -86,14 +86,14 @@ export const statusList = [
     "Готово",
 ];
 
-export const isAuth = false;
+export const isAuth = true;
 
 export const AppRoutes = {
     HOME: "/",
     LOGIN: "/login",
-    LOGOUT: "/logout",
+    LOGOUT: "/exit",
     REGISTER: "/register",
     ADD_NEW_CARD: "/addnewcard",
-    EDIT_CARD: "/editcard/:cardId",
+    EDIT_CARD: "/editcard/:id",
     NOT_FOUND: "*",
 }
