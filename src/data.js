@@ -85,3 +85,15 @@ export const statusList = [
     "Тестирование",
     "Готово",
 ];
+
+export const isAuth = false;
+
+export const AppRoutes = {
+    HOME: "/",
+    LOGIN: "/login",
+    LOGOUT: "/logout",
+    REGISTER: "/register",
+    ADD_NEW_CARD: "/addnewcard",
+    EDIT_CARD: "/editcard/:cardId",
+    NOT_FOUND: "*",
+}

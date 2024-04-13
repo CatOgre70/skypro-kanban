@@ -2,17 +2,14 @@ import './App.css'
 import PopNewCard from "./components/popups/PopNewCard/PopNewCard.jsx";
 import PopExit from "./components/popups/PopExit/PopExit.jsx";
 import PopBrowse from "./components/popups/PopBrowse/PopBrowse.jsx";
-import Header from "./components/Header/Header.jsx";
-import Main from "./components/Main/Main.jsx";
+import HomePage from "./components/HomePage/HomePage.jsx";
 import {useState} from "react";
-import {cardList} from "./data.js";
-
-export const AppRoutes = {
-    HOME: "/",
-    LOGIN: "/login",
-    REGISTER: "/register",
-    NOT_FOUND: "*",
-}
+import {AppRoutes, cardList, isAuth} from "./data.js";
+import {Wrapper} from "./App.styled.js";
+import {Route, Routes, useParams} from "react-router-dom";
+import Login from "./components/Pages/Login.jsx";
+import Registration from "./components/Pages/Registration.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
 
 function App() {
 
@@ -29,15 +26,22 @@ function App() {
         setCards([...cards, newCard]);
     }
 
+    let {cardId} = useParams();
+
     return (
         <>
-            <div className="wrapper">
-                  <PopExit />
-                  <PopNewCard />
-                  <PopBrowse />
-                  <Header onCardAdd={onCardAdd}/>
-                  <Main cards={cards}/>
-            </div>
+            <Wrapper>
+                <Routes>
+                    <Route path={AppRoutes.LOGIN} element={<Login />}/>
+                    <Route path={AppRoutes.REGISTER} element={<Registration />}/>
+                    <Route element={<PrivateRoute isAuth={isAuth} />}>
+                        <Route path={AppRoutes.ADD_NEW_CARD} element={<PopNewCard />}/>
+                        <Route path={AppRoutes.EDIT_CARD} element = {<PopBrowse cardId={cardId} />}/>
+                        <Route path={AppRoutes.HOME} element = {<HomePage onCardAdd={onCardAdd} cards={cards} />}/>
+                        <Route path={AppRoutes.LOGOUT} element={<PopExit/>}/>
+                    </Route>
+                </Routes>
+            </Wrapper>
         </>
     )
 }
