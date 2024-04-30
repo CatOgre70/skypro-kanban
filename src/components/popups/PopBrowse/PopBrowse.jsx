@@ -1,4 +1,6 @@
 import Calendar from "../../Calendar/Calendar.jsx";
+import {Link} from "react-router-dom";
+import {AppRoutes} from "../../../data.js";
 
 function PopBrowse() {
     return (<div className="pop-browse" id="popBrowse">
@@ -54,7 +56,7 @@ function PopBrowse() {
                                       <button className="btn-browse__delete _btn-bor _hover03"><a href="#">Удалить
                                           задачу</a></button>
                                   </div>
-                                  <button className="btn-browse__close _btn-bg _hover01"><a href="#">Закрыть</a>
+                                  <button className="btn-browse__close _btn-bg _hover01"><Link to={AppRoutes.HOME}>Закрыть</Link>
                                   </button>
                               </div>
                               <div className="pop-browse__btn-edit _hide">

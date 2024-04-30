@@ -6,6 +6,8 @@ import {
     PopExitStyled,
     PopExitTitleH2
 } from './PopExit.styled.js';
+import {AppRoutes} from "../../../data.js";
+import {Link} from "react-router-dom";
 
 const PopExit = () => (
     <PopExitStyled id="popExit">
@@ -15,10 +17,10 @@ const PopExit = () => (
                 <PopExitForm id="formExit" action="#">
                     <PopExitFormGroup>
                         <PopExitExitYes id="exitYes">
-                            <a href="modal/signin.html">Да, выйти</a>
+                            <Link to={AppRoutes.LOGIN}>Да, выйти</Link>
                         </PopExitExitYes>
                         <PopExitExitNo id="exitNo">
-                            <a href="main.html">Нет, остаться</a>
+                            <Link to={AppRoutes.HOME}>Нет, остаться</Link>
                         </PopExitExitNo>
                     </PopExitFormGroup>
                 </PopExitForm>

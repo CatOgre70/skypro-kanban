@@ -8,6 +8,8 @@ import {
     HeaderNav,
     HeaderStyled
 } from "./Header.styled.js";
+import {Link} from "react-router-dom";
+import {AppRoutes} from "../../data.js";
 
 const Header = ({onCardAdd}) => (
     <HeaderStyled>
@@ -21,7 +23,7 @@ const Header = ({onCardAdd}) => (
                 </HeaderLogoDark>
                 <HeaderNav>
                     <HeaderBtnMainNewHover01 id="btnMainNew" onClick={onCardAdd}>
-                        <a>Создать новую задачу</a>
+                        <Link to={AppRoutes.ADD_NEW_CARD}>Создать новую задачу</Link>
                     </HeaderBtnMainNewHover01>
                     <PopUser />
                 </HeaderNav>

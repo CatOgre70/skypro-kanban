@@ -9,6 +9,8 @@ import {
     CardsItem,
     CardTitle
 } from "./Card.styled.js";
+import {Link} from "react-router-dom";
+import {AppRoutes} from "../../data.js";
 
 const Card = ({theme, title, date}) => (
     <CardsItem>
@@ -17,13 +19,13 @@ const Card = ({theme, title, date}) => (
                 <CardTheme $themeColor={getThemeStyle(theme)}>
                     <ThemeText>{theme}</ThemeText>
                 </CardTheme>
-                <a href="#popBrowse" target="_self">
+                <Link to={AppRoutes.EDIT_CARD}>
                     <CardBtn>
                         <CardBtnDiv></CardBtnDiv>
                         <CardBtnDiv></CardBtnDiv>
                         <CardBtnDiv></CardBtnDiv>
                     </CardBtn>
-                </a>
+                </Link>
             </CardGroup>
             <CardContent>
                 <a href="" target="_blank">
