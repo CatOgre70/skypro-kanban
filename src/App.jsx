@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute.jsx";
 import PageNotFound from "./components/Pages/PageNotFound.jsx";
 
 function App() {
+
     return (
         <>
             <Wrapper>

@@ -94,6 +94,6 @@ export const AppRoutes = {
     LOGOUT: "/exit",
     REGISTER: "/register",
     ADD_NEW_CARD: "/addnewcard",
-    EDIT_CARD: "/editcard/:id",
+    EDIT_CARD: "/editcard/:taskId",
     NOT_FOUND: "*",
 }
