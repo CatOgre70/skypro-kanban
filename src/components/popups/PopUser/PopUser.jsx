@@ -6,6 +6,8 @@ import {
     PopUserSetName,
     PopUserSetTheme
 } from "./PopUser.styled.js";
+import {Link} from "react-router-dom";
+import {AppRoutes} from "../../../data.js";
 
 function PopUser() {
 
@@ -26,7 +28,7 @@ function PopUser() {
                             <p>Темная тема</p>
                             <input type="checkbox" name="checkbox"/>
                         </PopUserSetTheme>
-                        <PopUserSetButton type="button"><a href="#popExit">Выйти</a></PopUserSetButton>
+                        <PopUserSetButton type="button"><Link to={AppRoutes.LOGOUT}>Выйти</Link></PopUserSetButton>
                     </HeaderPopUserSet>
                 )
             }

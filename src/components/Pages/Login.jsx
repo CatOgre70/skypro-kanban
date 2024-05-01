@@ -7,6 +7,9 @@ import {
     ModalInput,
     ModalTitleH2
 } from "./Login.styled.js";
+import Registration from "./Registration.jsx";
+import {Link} from "react-router-dom";
+import {AppRoutes} from "../../data.js";
 
 function Login() {
     return(
@@ -20,7 +23,7 @@ function Login() {
                             <ModalBtnEnter id="btnEnter"><a href="../main.html">Войти</a></ModalBtnEnter>
                             <ModalFormGroup>
                                 <p>Нужно зарегистрироваться?</p>
-                                <a href="signup.html">Регистрируйтесь здесь</a>
+                                <Link to={AppRoutes.REGISTER}>Регистрируйтесь здесь</Link>
                             </ModalFormGroup>
                         </ModalFormLogin>
                     </ModalBlock>

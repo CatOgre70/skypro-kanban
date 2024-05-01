@@ -1,11 +1,19 @@
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
+import {Outlet} from "react-router-dom";
 
-const HomePage = ({onCardAdd, cards}) => (
+
+const HomePage = ({cards}) => {
+
+
+    return(
     <>
-        <Header onCardAdd={onCardAdd}/>
+        <Header />
         <Main cards={cards}/>
+        <Outlet />
     </>
-);
+    );
+
+}
 
 export default HomePage;

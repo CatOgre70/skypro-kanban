@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PopExitStyled = styled.div`
-    display: none;
+    display: flex;
     width: 100%;
     height: 100%;
     min-width: 320px;
@@ -75,7 +75,7 @@ export const PopExitExitYes = styled.button`
     &:hover {
         background-color: #33399b;
     }
-    a {
+    p {
         width: 100%;
         height: 100%;
         color: #FFFFFF;

@@ -86,14 +86,18 @@ export const statusList = [
     "Готово",
 ];
 
-export const isAuth = false;
+export let isAuth = true;
+
+export function setIsAuth(isAuthNew) {
+    isAuth = isAuthNew;
+}
 
 export const AppRoutes = {
     HOME: "/",
     LOGIN: "/login",
-    LOGOUT: "/logout",
+    LOGOUT: "/exit",
     REGISTER: "/register",
     ADD_NEW_CARD: "/addnewcard",
-    EDIT_CARD: "/editcard/:cardId",
+    EDIT_CARD: "/editcard/:taskId",
     NOT_FOUND: "*",
 }

@@ -6,6 +6,8 @@ import {
     ModalTitleH2,
     ModalInput, ModalBtnSignupEnter, ModalFormGroup
 } from "./Registration.styled.js";
+import {AppRoutes} from "../../data.js";
+import {Link} from "react-router-dom";
 
 function Registration() {
     return(
@@ -19,7 +21,7 @@ function Registration() {
                         <ModalInput type="password" name="password" id="passwordFirst" placeholder="Пароль"/>
                         <ModalBtnSignupEnter id="SignUpEnter"><a href="../main.html">Зарегистрироваться</a> </ModalBtnSignupEnter>
                         <ModalFormGroup>
-                            <p>Уже есть аккаунт?  <a href="signin.html">Войдите здесь</a></p>
+                            <p>Уже есть аккаунт?  <Link to={AppRoutes.LOGIN}>Войдите здесь</Link></p>
                         </ModalFormGroup>
                     </ModalFormLogin>
                 </ModalBlock>
