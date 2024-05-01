@@ -75,7 +75,7 @@ export const PopExitExitYes = styled.button`
     &:hover {
         background-color: #33399b;
     }
-    a {
+    p {
         width: 100%;
         height: 100%;
         color: #FFFFFF;
