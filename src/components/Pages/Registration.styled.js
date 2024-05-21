@@ -39,7 +39,7 @@ export const ModalTitleH2 = styled.h2`
     margin-bottom: 20px;
 `;
 
-export const ModalFormLogin = styled.div`
+export const ModalFormLogin = styled.form`
     width: 100%;
     display: flex;
     flex-direction: column;
