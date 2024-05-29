@@ -10,6 +10,7 @@ import {AppRoutes} from "../../data.js";
 import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {createUser} from "../../authapi.js";
+import {saveUserToLocalStorage} from "../../localstorageops.js";
 
 function Registration() {
     const [name, setName] = useState("");
@@ -27,7 +28,7 @@ function Registration() {
         };
         createUser(user).then((response) => {
             const createdUser = response.user;
-            console.log(createdUser);
+            saveUserToLocalStorage(createdUser);
         }).catch();
         navigate(AppRoutes.HOME);
     }

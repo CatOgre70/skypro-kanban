@@ -11,6 +11,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {AppRoutes} from "../../data.js";
 import {useState} from "react";
 import {userLogin} from "../../authapi.js";
+import {saveUserToLocalStorage, userGlobalData} from "../../localstorageops.js";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -27,6 +28,16 @@ function Login() {
         userLogin(user).then((response) => {
             const loggedInUser = response.user;
             console.log(loggedInUser);
+            const loggedInUser1 = {
+                id: loggedInUser._id,
+                login: loggedInUser.login,
+                password: loggedInUser.password,
+                name: loggedInUser.name,
+                token: loggedInUser.token,
+            };
+            console.log(loggedInUser1);
+            saveUserToLocalStorage(loggedInUser1);
+            console.log(userGlobalData);
         }).catch();
         navigate(AppRoutes.HOME);
     };

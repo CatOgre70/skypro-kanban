@@ -86,12 +86,6 @@ export const statusList = [
     "Готово",
 ];
 
-export let isAuth = true;
-
-export function setIsAuth(isAuthNew) {
-    isAuth = isAuthNew;
-}
-
 export const AppRoutes = {
     HOME: "/",
     LOGIN: "/login",

@@ -6,16 +6,16 @@ import {
     PopExitStyled,
     PopExitTitleH2
 } from './PopExit.styled.js';
-import {AppRoutes, isAuth, setIsAuth} from "../../../data.js";
+import {AppRoutes} from "../../../data.js";
 import {Link, useNavigate} from "react-router-dom";
+import {deleteUserFromLocalStorage} from "../../../localstorageops.js";
 
 const PopExit = () => {
 
     let navigate = useNavigate();
 
     function onClickExit() {
-        setIsAuth(false);
-        console.log(isAuth);
+        deleteUserFromLocalStorage();
         navigate(AppRoutes.LOGIN);
     }
 
