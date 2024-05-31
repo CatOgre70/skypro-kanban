@@ -11,13 +11,14 @@ import {
 } from "./Card.styled.js";
 import {Link} from "react-router-dom";
 import {AppRoutes} from "../../data.js";
+import {dateToString} from "../../date-processing.js";
 
-const Card = ({theme, title, date}) => (
+const Card = ({topic, title, date}) => (
     <CardsItem>
         <CardsCard>
             <CardGroup>
-                <CardTheme $themeColor={getThemeStyle(theme)}>
-                    <ThemeText>{theme}</ThemeText>
+                <CardTheme $themeColor={getThemeStyle(topic)}>
+                    <ThemeText>{topic}</ThemeText>
                 </CardTheme>
                 <Link to={AppRoutes.EDIT_CARD}>
                     <CardBtn>
@@ -48,7 +49,7 @@ const Card = ({theme, title, date}) => (
                             </clipPath>
                         </defs>
                     </CardDateImage>
-                    <CardDateParagraph>{date}</CardDateParagraph>
+                    <CardDateParagraph>{dateToString(date)}</CardDateParagraph>
                 </CardDate>
             </CardContent>
         </CardsCard>
