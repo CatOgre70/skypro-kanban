@@ -10,24 +10,41 @@ import Login from "./components/Pages/Login.jsx";
 import Registration from "./components/Pages/Registration.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import PageNotFound from "./components/Pages/PageNotFound.jsx";
-import {isUserLoggedIn} from "./localstorageops.js";
+import {getUserDataFromLocalStorage} from "./localstorageops.js";
+import {useState} from "react";
+import {UserContext} from "./contexts/user.js";
 
 function App() {
+
+
+    const [user, setUser] = useState(getUserDataFromLocalStorage());
+
+    function updateUser(newUser) {
+        setUser(newUser);
+    }
+
+    function isUserLoggedIn() {
+        return user !== null && user.token !== undefined && user.token !== null;
+    }
+
+
     return (
         <>
             <Wrapper>
-                <Routes>
-                    <Route path={AppRoutes.LOGIN} element={<Login />}/>
-                    <Route path={AppRoutes.REGISTER} element={<Registration />}/>
-                    <Route path={AppRoutes.NOT_FOUND} element={<PageNotFound />}/>
-                    <Route element={<PrivateRoute isAuth={isUserLoggedIn()} />}>
-                        <Route path={AppRoutes.HOME} element = {<HomePage />}>
-                            <Route path={AppRoutes.ADD_NEW_CARD} element={<PopNewCard />}/>
-                            <Route path={AppRoutes.EDIT_CARD} element = {<PopBrowse />}/>
-                            <Route path={AppRoutes.LOGOUT} element={<PopExit />}/>
+                <UserContext.Provider value={{user, updateUser, isUserLoggedIn}}>
+                    <Routes>
+                        <Route path={AppRoutes.LOGIN} element={<Login />}/>
+                        <Route path={AppRoutes.REGISTER} element={<Registration />}/>
+                        <Route path={AppRoutes.NOT_FOUND} element={<PageNotFound />}/>
+                        <Route element={<PrivateRoute isAuth={isUserLoggedIn()} />}>
+                            <Route path={AppRoutes.HOME} element = {<HomePage />}>
+                                <Route path={AppRoutes.ADD_NEW_CARD} element={<PopNewCard />}/>
+                                <Route path={AppRoutes.EDIT_CARD} element = {<PopBrowse />}/>
+                                <Route path={AppRoutes.LOGOUT} element={<PopExit />}/>
+                            </Route>
                         </Route>
-                    </Route>
-                </Routes>
+                    </Routes>
+                </UserContext.Provider>
             </Wrapper>
         </>
     )

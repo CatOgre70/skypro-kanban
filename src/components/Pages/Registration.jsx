@@ -11,8 +11,10 @@ import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {createUser} from "../../authapi.js";
 import {saveUserToLocalStorage} from "../../localstorageops.js";
+import {useUserContext} from "../../contexts/user.js";
 
 function Registration() {
+    const { updateUser} = useUserContext();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -21,13 +23,14 @@ function Registration() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const user = {
+        const newUser = {
             login: email,
             name: name,
             password: password
         };
-        createUser(user).then((response) => {
+        createUser(newUser).then((response) => {
             const createdUser = response.user;
+            updateUser(createdUser);
             saveUserToLocalStorage(createdUser);
         }).catch();
         navigate(AppRoutes.HOME);

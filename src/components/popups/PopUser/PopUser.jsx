@@ -8,43 +8,28 @@ import {
 } from "./PopUser.styled.js";
 import {Link} from "react-router-dom";
 import {AppRoutes} from "../../../data.js";
-import {
-    getUserDataFromLocalStorage,
-    setUserGlobalData, userGlobalData,
-} from "../../../localstorageops.js";
+import {useUserContext} from "../../../contexts/user.js";
 
 function PopUser() {
 
+    const {user} = useUserContext();
     const [isVisible, setIsVisible] = useState(false);
-    const [localToken, setLocalToken] = useState("");
-    const [localName, setLocalName] = useState("");
-    const [localLogin, setLocalLogin] = useState("");
-
-    // const [userLocalData, setUserLocalData] = useState(userGlobalData);
-
-    // Вот тут вообще непонятно, как сделать перерисовку компонета при смене пользователя
-    useEffect(() => {
-       const userData = getUserDataFromLocalStorage();
-       console.log(userData);
-       setLocalToken(() => userData.token);
-       setLocalName(() => userData.name);
-       setLocalLogin(() => userData.login);
-       setUserGlobalData(userData);
-       console.log(userGlobalData);
-    }, [localToken, localName, localLogin]);
-    // Конец непоняток
 
     const onClick = () => {
         setIsVisible((prevState) => !prevState);
     }
 
+    useEffect(() => {
+
+    }, []);
+
     return(
         <div>
-            <HeaderUserHover02 href="#user-set-target" onClick={onClick}>{localName}</HeaderUserHover02>
+            <HeaderUserHover02 href="#user-set-target" onClick={onClick}>{user.name}</HeaderUserHover02>
             { isVisible && (
                     <HeaderPopUserSet id="user-set-target">
-                        <PopUserSetName>{localName}</PopUserSetName>
-                        <PopUserSetMail>{localLogin}</PopUserSetMail>
+                        <PopUserSetName>{user.name}</PopUserSetName>
+                        <PopUserSetMail>{user.login}</PopUserSetMail>
                         <PopUserSetTheme>
                             <p>Темная тема</p>
                             <input type="checkbox" name="checkbox"/>

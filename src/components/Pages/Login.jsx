@@ -11,9 +11,11 @@ import {Link, useNavigate} from "react-router-dom";
 import {AppRoutes} from "../../data.js";
 import {useState} from "react";
 import {userLogin} from "../../authapi.js";
-import {saveUserToLocalStorage, userGlobalData} from "../../localstorageops.js";
+import {saveUserToLocalStorage} from "../../localstorageops.js";
+import {useUserContext} from "../../contexts/user.js";
 
 function Login() {
+    const {updateUser} = useUserContext();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -21,23 +23,21 @@ function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const user = {
+        const userCredentials = {
             login: email,
             password: password
         };
-        userLogin(user).then((response) => {
-            const loggedInUser = response.user;
-            console.log(loggedInUser);
-            const loggedInUser1 = {
-                id: loggedInUser._id,
-                login: loggedInUser.login,
-                password: loggedInUser.password,
-                name: loggedInUser.name,
-                token: loggedInUser.token,
+        userLogin(userCredentials).then((response) => {
+            const loggedInUser = {
+                id: response.user._id,
+                login: response.user.login,
+                password: response.user.password,
+                name: response.user.name,
+                token: response.user.token,
             };
-            console.log(loggedInUser1);
-            saveUserToLocalStorage(loggedInUser1);
-            console.log(userGlobalData);
+            console.log(loggedInUser);
+            updateUser(loggedInUser);
+            saveUserToLocalStorage(loggedInUser);
         }).catch();
         navigate(AppRoutes.HOME);
     };

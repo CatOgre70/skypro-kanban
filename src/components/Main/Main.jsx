@@ -1,13 +1,14 @@
 import Column from "../Column/Column.jsx";
 import {statusList} from "../../data.js";
 import {useEffect, useState} from "react";
-import {ContainerStyled, DataIsLoading, MainBlock, MainContent, MainStyled} from "./Main.styled.js";
+import {ContainerStyled, MainBlock, MainContent, MainStyled} from "./Main.styled.js";
 import {getTaskList} from "../../api.js";
 import ShowMessageWindow from "./UserMessageWindow.jsx";
-
+import {useUserContext} from "../../contexts/user.js";
 
 function Main() {
 
+    const {user} = useUserContext();
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -16,8 +17,7 @@ function Main() {
     useEffect(() => {
         setIsLoading(true);
         setIsError(false);
-        getTaskList().then((result) => {
-            console.log(result.tasks);
+        getTaskList(user.token).then((result) => {
             setCards(result.tasks);
             setIsLoading(false);
             setErrorMessage("none");
@@ -25,7 +25,7 @@ function Main() {
             setIsError(true);
             setErrorMessage(error.message);
         });
-    }, []);
+    }, [user.token]);
 
     return (
         <MainStyled>
@@ -33,14 +33,14 @@ function Main() {
                 <MainBlock>
                     <MainContent>
                         {
-                                isLoading ? (<ShowMessageWindow isError={isError} errorMessage={errorMessage}/>) :
-                                (statusList.map((status) => (
-                                    <Column
-                                        key={status}
-                                        columnTitle={status}
-                                        cardList={cards.filter((card) => card.status === status)}
-                                    />
-                                )))
+                            isLoading ? (<ShowMessageWindow isError={isError} errorMessage={errorMessage}/>) :
+                            (statusList.map((status) => (
+                                <Column
+                                    key={status}
+                                    columnTitle={status}
+                                    cardList={cards.filter((card) => card.status === status)}
+                                />
+                            )))
                         }
                     </MainContent>
                 </MainBlock>

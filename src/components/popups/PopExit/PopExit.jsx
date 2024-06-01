@@ -9,12 +9,14 @@ import {
 import {AppRoutes} from "../../../data.js";
 import {Link, useNavigate} from "react-router-dom";
 import {deleteUserFromLocalStorage} from "../../../localstorageops.js";
+import {useUserContext} from "../../../contexts/user.js";
 
 const PopExit = () => {
-
+    const {updateUser} = useUserContext();
     let navigate = useNavigate();
 
     function onClickExit() {
+        updateUser(null);
         deleteUserFromLocalStorage();
         navigate(AppRoutes.LOGIN);
     }

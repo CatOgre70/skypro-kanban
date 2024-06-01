@@ -1,7 +1,7 @@
-export async function getTaskList() {
+export async function getTaskList(token) {
     const response = await fetch("https://wedev-api.sky.pro/api/kanban", {
         headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
+            Authorization: `Bearer ${token}`
         }
     });
 
