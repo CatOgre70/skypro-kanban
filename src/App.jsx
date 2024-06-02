@@ -10,28 +10,31 @@ import Login from "./components/Pages/Login.jsx";
 import Registration from "./components/Pages/Registration.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import PageNotFound from "./components/Pages/PageNotFound.jsx";
-import {getUserDataFromLocalStorage} from "./localstorageops.js";
-import {useState} from "react";
+import {deleteUserFromLocalStorage, getUserDataFromLocalStorage, saveUserToLocalStorage} from "./localstorageops.js";
+import {useEffect, useState} from "react";
 import {UserContext} from "./contexts/user.js";
 
 function App() {
 
-
     const [user, setUser] = useState(getUserDataFromLocalStorage());
 
-    function updateUser(newUser) {
-        setUser(newUser);
-    }
-
     function isUserLoggedIn() {
-        return user !== null && user.token !== undefined && user.token !== null;
+        return user !== null && user !== undefined && user.token !== undefined && user.token !== null;
     }
 
+    useEffect(() => {
+        if(user !== null && user.token !== undefined && user.token !== null) {
+            saveUserToLocalStorage(user);
+        } else {
+            deleteUserFromLocalStorage();
+        }
+
+    }, [user]);
 
     return (
         <>
             <Wrapper>
-                <UserContext.Provider value={{user, updateUser, isUserLoggedIn}}>
+                <UserContext.Provider value={{user, setUser}}>
                     <Routes>
                         <Route path={AppRoutes.LOGIN} element={<Login />}/>
                         <Route path={AppRoutes.REGISTER} element={<Registration />}/>

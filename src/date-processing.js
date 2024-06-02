@@ -11,7 +11,7 @@ export function dateToStringOnlyDate(dateString) {
         const date = new Date(Date.parse(dateString));
         return format(date, "dd MMMM yyyy", {locale: ru});
     } else {
-        return "";
+        return "нет";
     }
 
 }

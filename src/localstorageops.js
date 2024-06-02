@@ -18,10 +18,14 @@ export function getUserDataFromLocalStorage() {
     const token = localStorage.getItem("token");
     const login = localStorage.getItem("userEmail");
     const name = localStorage.getItem("userName");
-    return {
-        id: id,
-        login: login,
-        name: name,
-        token: token,
-    };
+    if(token == null || token === "" || token === undefined){
+        return null;
+    } else {
+        return {
+            id: id,
+            login: login,
+            name: name,
+            token: token,
+        };
+    }
 }

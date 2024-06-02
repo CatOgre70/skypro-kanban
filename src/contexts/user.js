@@ -1,11 +1,4 @@
-import {createContext, useContext} from "react";
+import {createContext} from "react";
+import {getUserDataFromLocalStorage} from "../localstorageops.js";
 
-export const UserContext = createContext(null);
-
-export function useUserContext() {
-    const user = useContext(UserContext);
-    if (!user) {
-        throw new Error("Данные пользователя не найдены");
-    }
-    return user;
-}
+export const UserContext = createContext(getUserDataFromLocalStorage());

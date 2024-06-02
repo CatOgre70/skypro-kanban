@@ -1,12 +1,17 @@
 import { Navigate, Outlet } from "react-router-dom";
 import {AppRoutes} from "./data.js";
-import {useUserContext} from "./contexts/user.js";
+import {UserContext} from "./contexts/user.js";
+import {useContext} from "react";
 
 
 function PrivateRoute() {
-    const {isUserLoggedIn} = useUserContext();
+    const {user} = useContext(UserContext);
 
-    return isUserLoggedIn ? <Outlet /> : <Navigate to={AppRoutes.LOGIN} />;
+    function isUserLoggedIn() {
+        return user !== null && user !== undefined && user.token !== undefined && user.token !== null && user.token !== "";
+    }
+
+    return isUserLoggedIn() ? <Outlet /> : <Navigate to={AppRoutes.LOGIN} />;
 }
 
 export default PrivateRoute;

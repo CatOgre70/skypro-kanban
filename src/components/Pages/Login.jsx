@@ -9,13 +9,12 @@ import {
 } from "./Login.styled.js";
 import {Link, useNavigate} from "react-router-dom";
 import {AppRoutes} from "../../data.js";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {userLogin} from "../../authapi.js";
-import {saveUserToLocalStorage} from "../../localstorageops.js";
-import {useUserContext} from "../../contexts/user.js";
+import {UserContext} from "../../contexts/user.js";
 
 function Login() {
-    const {updateUser} = useUserContext();
+    const {setUser} = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -36,8 +35,7 @@ function Login() {
                 token: response.user.token,
             };
             console.log(loggedInUser);
-            updateUser(loggedInUser);
-            saveUserToLocalStorage(loggedInUser);
+            setUser(loggedInUser);
         }).catch();
         navigate(AppRoutes.HOME);
     };

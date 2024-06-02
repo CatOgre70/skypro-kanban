@@ -8,16 +8,15 @@ import {
 } from './PopExit.styled.js';
 import {AppRoutes} from "../../../data.js";
 import {Link, useNavigate} from "react-router-dom";
-import {deleteUserFromLocalStorage} from "../../../localstorageops.js";
-import {useUserContext} from "../../../contexts/user.js";
+import {UserContext} from "../../../contexts/user.js";
+import {useContext} from "react";
 
 const PopExit = () => {
-    const {updateUser} = useUserContext();
+    const {setUser} = useContext(UserContext);
     let navigate = useNavigate();
 
     function onClickExit() {
-        updateUser(null);
-        deleteUserFromLocalStorage();
+        setUser(null);
         navigate(AppRoutes.LOGIN);
     }
 

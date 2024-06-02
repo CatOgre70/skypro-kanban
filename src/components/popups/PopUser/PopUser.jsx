@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useContext, useState} from "react";
 import {
     HeaderPopUserSet,
     HeaderUserHover02, PopUserSetButton,
@@ -8,28 +8,24 @@ import {
 } from "./PopUser.styled.js";
 import {Link} from "react-router-dom";
 import {AppRoutes} from "../../../data.js";
-import {useUserContext} from "../../../contexts/user.js";
+import {UserContext} from "../../../contexts/user.js";
 
 function PopUser() {
 
-    const {user} = useUserContext();
+    const {user} = useContext(UserContext);
     const [isVisible, setIsVisible] = useState(false);
 
     const onClick = () => {
         setIsVisible((prevState) => !prevState);
     }
 
-    useEffect(() => {
-
-    }, []);
-
     return(
         <div>
-            <HeaderUserHover02 href="#user-set-target" onClick={onClick}>{user.name}</HeaderUserHover02>
+            <HeaderUserHover02 href="#user-set-target" onClick={onClick}>{user == null ? "" : user.name}</HeaderUserHover02>
             { isVisible && (
                     <HeaderPopUserSet id="user-set-target">
-                        <PopUserSetName>{user.name}</PopUserSetName>
-                        <PopUserSetMail>{user.login}</PopUserSetMail>
+                        <PopUserSetName>{user == null ? "" : user.name}</PopUserSetName>
+                        <PopUserSetMail>{user == null ? "" : user.login}</PopUserSetMail>
                         <PopUserSetTheme>
                             <p>Темная тема</p>
                             <input type="checkbox" name="checkbox"/>

@@ -1,17 +1,30 @@
-import {Link} from "react-router-dom";
 import {AppRoutes} from "../../../data.js";
 import CalendarNew from "../../Calendar/CalendarNew.jsx";
+import {
+    PopNewCardBlock, PopNewCardClose,
+    PopNewCardContainer,
+    PopNewCardContent, PopNewCardForm, PopNewCardStyled,
+    PopNewCardTitle, PopNewCardWrap
+} from "./PopNewCard.styled.js";
+import {useNavigate} from "react-router-dom";
 
 function PopNewCard() {
+
+    let navigate = useNavigate();
+
+    function onClick() {
+        navigate(AppRoutes.HOME);
+    }
+
     return (
-        <div className="pop-new-card" id="popNewCard">
-            <div className="pop-new-card__container">
-                <div className="pop-new-card__block">
-                    <div className="pop-new-card__content">
-                        <h3 className="pop-new-card__ttl">Создание задачи</h3>
-                        <Link to={AppRoutes.HOME} className="pop-new-card__close">&#10006;</Link>
-                        <div className="pop-new-card__wrap">
-                            <form className="pop-new-card__form form-new" id="formNewCard" action="#">
+        <PopNewCardStyled>
+            <PopNewCardContainer>
+                <PopNewCardBlock>
+                    <PopNewCardContent>
+                        <PopNewCardTitle>Создание задачи</PopNewCardTitle>
+                        <PopNewCardClose onClick={onClick}>&#10006;</PopNewCardClose>
+                        <PopNewCardWrap>
+                            <PopNewCardForm>
                                 <div className="form-new__block">
                                     <label htmlFor="formTitle" className="subttl">Название задачи</label>
                                     <input className="form-new__input" type="text" name="name" id="formTitle"
@@ -22,9 +35,9 @@ function PopNewCard() {
                                     <textarea className="form-new__area" name="text" id="textArea"
                                               placeholder="Введите описание задачи..."></textarea>
                                 </div>
-                            </form>
+                            </PopNewCardForm>
                             <CalendarNew />
-                        </div>
+                        </PopNewCardWrap>
                         <div className="pop-new-card__categories categories">
                             <p className="categories__p subttl">Категория</p>
                             <div className="categories__themes">
@@ -40,10 +53,10 @@ function PopNewCard() {
                             </div>
                         </div>
                         <button className="form-new__create _hover01" id="btnCreate">Создать задачу</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </PopNewCardContent>
+                </PopNewCardBlock>
+            </PopNewCardContainer>
+        </PopNewCardStyled>
     );
 
 }
