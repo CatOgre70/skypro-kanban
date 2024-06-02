@@ -213,7 +213,7 @@ body {
 .form-new__create {
   width: 132px;
   height: 30px;
-  background-color: #565EEF;
+    background-color: #565EEF;
   border-radius: 4px;
   border: 0;
   outline: none;

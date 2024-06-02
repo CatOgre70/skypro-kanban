@@ -29,8 +29,9 @@ function CalendarNew() {
                     captionLayout={"buttons"}
                     showOutsideDays={true}
                     classNames={defaultStyles}
+                    fixedWeeks={true}
                 />
-                <SelectedDay>Выбранный день: {dateToStringOnlyDate(selected)}</SelectedDay>
+                <SelectedDay>Выбрано: {dateToStringOnlyDate(selected)}</SelectedDay>
                 <TodayButton onClick={() => {setMonth(today); setSelected(today)}}>Сегодня</TodayButton>
             </CalendarBlock>
         </>

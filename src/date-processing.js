@@ -7,6 +7,11 @@ export function dateToString(dateString) {
 }
 
 export function dateToStringOnlyDate(dateString) {
-    const date = new Date(Date.parse(dateString));
-    return format(date, "dd MMMM yyyy", {locale: ru});
+    if(dateString !== null && dateString !== "" && dateString !== undefined) {
+        const date = new Date(Date.parse(dateString));
+        return format(date, "dd MMMM yyyy", {locale: ru});
+    } else {
+        return "";
+    }
+
 }
