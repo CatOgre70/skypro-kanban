@@ -1,6 +1,6 @@
-import Calendar from "../../Calendar/Calendar.jsx";
 import {Link} from "react-router-dom";
 import {AppRoutes} from "../../../data.js";
+import CalendarNew from "../../Calendar/CalendarNew.jsx";
 
 function PopNewCard() {
     return (
@@ -23,7 +23,7 @@ function PopNewCard() {
                                               placeholder="Введите описание задачи..."></textarea>
                                 </div>
                             </form>
-                            <Calendar />
+                            <CalendarNew />
                         </div>
                         <div className="pop-new-card__categories categories">
                             <p className="categories__p subttl">Категория</p>

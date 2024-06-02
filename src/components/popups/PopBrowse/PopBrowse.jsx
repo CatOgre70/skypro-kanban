@@ -1,6 +1,6 @@
-import Calendar from "../../Calendar/Calendar.jsx";
 import {Link, useParams} from "react-router-dom";
 import {AppRoutes} from "../../../data.js";
+import CalendarNew from "../../Calendar/CalendarNew.jsx";
 
 function PopBrowse() {
     let {taskId} = useParams();
@@ -42,7 +42,7 @@ function PopBrowse() {
                                                     placeholder="Введите описание задачи..."></textarea>
                                       </div>
                                   </form>
-                                  <Calendar />
+                                  <CalendarNew />
                               </div>
                               <div className="theme-down__categories theme-down">
                                   <p className="categories__p subttl">Категория</p>
