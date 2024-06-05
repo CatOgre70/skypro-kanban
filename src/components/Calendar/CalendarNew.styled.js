@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {DayPicker} from "react-day-picker";
 
 export const CalendarBlock = styled.div`
     margin: 20px;

@@ -36,8 +36,8 @@ function Login() {
             };
             console.log(loggedInUser);
             setUser(loggedInUser);
+            navigate(AppRoutes.HOME);
         }).catch();
-        navigate(AppRoutes.HOME);
     };
 
     return(

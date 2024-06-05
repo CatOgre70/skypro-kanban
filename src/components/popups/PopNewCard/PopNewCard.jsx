@@ -1,6 +1,8 @@
 import {AppRoutes} from "../../../data.js";
 import CalendarNew from "../../Calendar/CalendarNew.jsx";
 import {
+    FormNewArea,
+    FormNewBlock, FormNewInput, FormNewSubTitle,
     PopNewCardBlock, PopNewCardClose,
     PopNewCardContainer,
     PopNewCardContent, PopNewCardForm, PopNewCardStyled,
@@ -10,7 +12,7 @@ import {useNavigate} from "react-router-dom";
 
 function PopNewCard() {
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     function onClick() {
         navigate(AppRoutes.HOME);
@@ -25,16 +27,16 @@ function PopNewCard() {
                         <PopNewCardClose onClick={onClick}>&#10006;</PopNewCardClose>
                         <PopNewCardWrap>
                             <PopNewCardForm>
-                                <div className="form-new__block">
-                                    <label htmlFor="formTitle" className="subttl">Название задачи</label>
-                                    <input className="form-new__input" type="text" name="name" id="formTitle"
+                                <FormNewBlock>
+                                    <FormNewSubTitle>Название задачи</FormNewSubTitle>
+                                    <FormNewInput type="text" name="name" id="formTitle"
                                            placeholder="Введите название задачи..." autoFocus/>
-                                </div>
-                                <div className="form-new__block">
-                                    <label htmlFor="textArea" className="subttl">Описание задачи</label>
-                                    <textarea className="form-new__area" name="text" id="textArea"
-                                              placeholder="Введите описание задачи..."></textarea>
-                                </div>
+                                </FormNewBlock>
+                                <FormNewBlock>
+                                    <FormNewSubTitle>Описание задачи</FormNewSubTitle>
+                                    <FormNewArea name="text" id="textArea"
+                                                 placeholder="Введите описание задачи..."></FormNewArea>
+                                </FormNewBlock>
                             </PopNewCardForm>
                             <CalendarNew />
                         </PopNewCardWrap>

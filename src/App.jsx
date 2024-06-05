@@ -39,7 +39,7 @@ function App() {
                         <Route path={AppRoutes.LOGIN} element={<Login />}/>
                         <Route path={AppRoutes.REGISTER} element={<Registration />}/>
                         <Route path={AppRoutes.NOT_FOUND} element={<PageNotFound />}/>
-                        <Route element={<PrivateRoute isAuth={isUserLoggedIn()} />}>
+                        <Route element={<PrivateRoute />}>
                             <Route path={AppRoutes.HOME} element = {<HomePage />}>
                                 <Route path={AppRoutes.ADD_NEW_CARD} element={<PopNewCard />}/>
                                 <Route path={AppRoutes.EDIT_CARD} element = {<PopBrowse />}/>
