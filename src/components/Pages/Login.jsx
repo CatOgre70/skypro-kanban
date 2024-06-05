@@ -2,7 +2,7 @@ import {
     ContainerSignIn,
     Modal,
     ModalBlock,
-    ModalBtnEnter, ModalFormGroup,
+    ModalBtnEnter, ModalFormError, ModalFormGroup,
     ModalFormLogin,
     ModalInput,
     ModalTitleH2
@@ -17,11 +17,13 @@ function Login() {
     const {setUser} = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isError, setIsError] = useState(false);
 
     let navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setIsError(false);
         const userCredentials = {
             login: email,
             password: password
@@ -37,7 +39,9 @@ function Login() {
             console.log(loggedInUser);
             setUser(loggedInUser);
             navigate(AppRoutes.HOME);
-        }).catch();
+        }).catch(() => {
+            setIsError(true);
+        });
     };
 
     return(
@@ -63,6 +67,7 @@ function Login() {
                                 <p>Нужно зарегистрироваться?</p>
                                 <Link to={AppRoutes.REGISTER}>Регистрируйтесь здесь</Link>
                             </ModalFormGroup>
+                            { isError && (<ModalFormError>&#10006; Возникла ошибка: неправильный логин или пароль</ModalFormError>) }
                         </ModalFormLogin>
                     </ModalBlock>
                 </Modal>

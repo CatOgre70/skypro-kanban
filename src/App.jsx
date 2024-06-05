@@ -18,10 +18,6 @@ function App() {
 
     const [user, setUser] = useState(getUserDataFromLocalStorage());
 
-    function isUserLoggedIn() {
-        return user !== null && user !== undefined && user.token !== undefined && user.token !== null;
-    }
-
     useEffect(() => {
         if(user !== null && user.token !== undefined && user.token !== null) {
             saveUserToLocalStorage(user);

@@ -109,3 +109,8 @@ export const ModalFormGroup = styled.div`
         text-decoration: underline;    
     }
 `;
+
+export const ModalFormError = styled.div`
+    color: red;
+    margin: 8px 14px;
+`;

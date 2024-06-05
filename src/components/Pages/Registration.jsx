@@ -4,7 +4,8 @@ import {
     ModalStyled,
     ModalFormLogin,
     ModalTitleH2,
-    ModalInput, ModalBtnSignupEnter, ModalFormGroup
+    ModalInput, ModalBtnSignupEnter, ModalFormGroup,
+    ModalFormError
 } from "./Registration.styled.js";
 import {AppRoutes} from "../../data.js";
 import {Link, useNavigate} from "react-router-dom";
@@ -17,11 +18,13 @@ function Registration() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isError, setIsError] = useState(false);
 
     let navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setIsError(false);
         const newUser = {
             login: email,
             name: name,
@@ -30,8 +33,11 @@ function Registration() {
         createUser(newUser).then((response) => {
             const createdUser = response.user;
             setUser(createdUser);
-        }).catch();
-        navigate(AppRoutes.HOME);
+            navigate(AppRoutes.HOME);
+        }).catch(() => {
+            setIsError(true);
+        });
+
     }
 
     return(
@@ -62,6 +68,7 @@ function Registration() {
                         <ModalFormGroup>
                             <p>Уже есть аккаунт?  <Link to={AppRoutes.LOGIN}>Войдите здесь</Link></p>
                         </ModalFormGroup>
+                        { isError && (<ModalFormError>&#10006; Возникла ошибка: пользователь с таким логином уже существует</ModalFormError>) }
                     </ModalFormLogin>
                 </ModalBlock>
             </ModalStyled>
