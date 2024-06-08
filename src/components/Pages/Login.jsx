@@ -2,7 +2,7 @@ import {
     ContainerSignIn,
     Modal,
     ModalBlock,
-    ModalBtnEnter, ModalFormError, ModalFormGroup,
+    ModalBtnEnter, ModalFormError, ModalFormGroup, ModalFormGroupLink,
     ModalFormLogin,
     ModalInput,
     ModalTitleH2
@@ -24,24 +24,28 @@ function Login() {
     const handleSubmit = (event) => {
         event.preventDefault();
         setIsError(false);
-        const userCredentials = {
-            login: email,
-            password: password
-        };
-        userLogin(userCredentials).then((response) => {
-            const loggedInUser = {
-                id: response.user._id,
-                login: response.user.login,
-                password: response.user.password,
-                name: response.user.name,
-                token: response.user.token,
+        if(email.trim() !== "" && password.trim() !== "") {
+            const userCredentials = {
+                login: email,
+                password: password
             };
-            console.log(loggedInUser);
-            setUser(loggedInUser);
-            navigate(AppRoutes.HOME);
-        }).catch(() => {
+            userLogin(userCredentials).then((response) => {
+                const loggedInUser = {
+                    id: response.user._id,
+                    login: response.user.login,
+                    password: response.user.password,
+                    name: response.user.name,
+                    token: response.user.token,
+                };
+                console.log(loggedInUser);
+                setUser(loggedInUser);
+                navigate(AppRoutes.HOME);
+            }).catch(() => {
+                setIsError(true);
+            });
+        } else {
             setIsError(true);
-        });
+        }
     };
 
     return(
@@ -65,7 +69,7 @@ function Login() {
                             <ModalBtnEnter type="submit">Войти</ModalBtnEnter>
                             <ModalFormGroup>
                                 <p>Нужно зарегистрироваться?</p>
-                                <Link to={AppRoutes.REGISTER}>Регистрируйтесь здесь</Link>
+                                <ModalFormGroupLink to={AppRoutes.REGISTER}>Регистрируйтесь здесь</ModalFormGroupLink>
                             </ModalFormGroup>
                             { isError && (<ModalFormError>&#10006; Возникла ошибка: неправильный логин или пароль</ModalFormError>) }
                         </ModalFormLogin>

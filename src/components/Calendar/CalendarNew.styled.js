@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {DayPicker} from "react-day-picker";
 
 export const CalendarBlock = styled.div`
     margin: 20px;
@@ -25,6 +24,9 @@ export const TodayButton = styled.button`
     line-height: 1;
     color: #FFFFFF;
     float: right;
+    &:hover {
+        background-color: #33399b;
+    }
 `;
 
 export const SelectedDay = styled.p`

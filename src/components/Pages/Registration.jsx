@@ -5,7 +5,7 @@ import {
     ModalFormLogin,
     ModalTitleH2,
     ModalInput, ModalBtnSignupEnter, ModalFormGroup,
-    ModalFormError
+    ModalFormError, ModalFormGroupLink
 } from "./Registration.styled.js";
 import {AppRoutes} from "../../data.js";
 import {Link, useNavigate} from "react-router-dom";
@@ -19,25 +19,32 @@ function Registration() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isError, setIsError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     let navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
         setIsError(false);
-        const newUser = {
-            login: email,
-            name: name,
-            password: password
-        };
-        createUser(newUser).then((response) => {
-            const createdUser = response.user;
-            setUser(createdUser);
-            navigate(AppRoutes.HOME);
-        }).catch(() => {
+        setErrorMessage("");
+        if(name.trim() !== "" && email.trim() !== "" && password.trim() !== "") {
+            const newUser = {
+                login: email,
+                name: name,
+                password: password
+            };
+            createUser(newUser).then((response) => {
+                const createdUser = response.user;
+                setUser(createdUser);
+                navigate(AppRoutes.HOME);
+            }).catch(() => {
+                setIsError(true);
+                setErrorMessage("пользователь с таким логином уже существует")
+            });
+        } else {
             setIsError(true);
-        });
-
+            setErrorMessage("имя пользователя, электронная почта и пароль не могут быть пустыми");
+        }
     }
 
     return(
@@ -66,9 +73,10 @@ function Registration() {
                         />
                         <ModalBtnSignupEnter type="submit">Зарегистрироваться</ModalBtnSignupEnter>
                         <ModalFormGroup>
-                            <p>Уже есть аккаунт?  <Link to={AppRoutes.LOGIN}>Войдите здесь</Link></p>
+                            <p>Уже есть аккаунт?</p>
+                            <ModalFormGroupLink to={AppRoutes.LOGIN}>Войдите здесь</ModalFormGroupLink>
                         </ModalFormGroup>
-                        { isError && (<ModalFormError>&#10006; Возникла ошибка: пользователь с таким логином уже существует</ModalFormError>) }
+                        { isError && (<ModalFormError>&#10006; Возникла ошибка: {errorMessage}</ModalFormError>) }
                     </ModalFormLogin>
                 </ModalBlock>
             </ModalStyled>

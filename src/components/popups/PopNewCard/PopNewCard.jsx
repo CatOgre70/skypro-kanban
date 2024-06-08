@@ -2,11 +2,22 @@ import {AppRoutes} from "../../../data.js";
 import CalendarNew from "../../Calendar/CalendarNew.jsx";
 import {
     FormNewArea,
-    FormNewBlock, FormNewInput, FormNewSubTitle,
-    PopNewCardBlock, PopNewCardClose,
+    FormNewBlock,
+    FormNewCreate,
+    FormNewInput,
+    FormNewSubTitle,
+    PopNewCardBlock,
+    PopNewCardCategories,
+    PopNewCardCategoriesPSubTitle,
+    PopNewCardCategoriesTheme,
+    PopNewCardCategoriesThemes,
+    PopNewCardClose,
     PopNewCardContainer,
-    PopNewCardContent, PopNewCardForm, PopNewCardStyled,
-    PopNewCardTitle, PopNewCardWrap
+    PopNewCardContent,
+    PopNewCardForm,
+    PopNewCardStyled,
+    PopNewCardTitle,
+    PopNewCardWrap
 } from "./PopNewCard.styled.js";
 import {useNavigate} from "react-router-dom";
 
@@ -40,21 +51,21 @@ function PopNewCard() {
                             </PopNewCardForm>
                             <CalendarNew />
                         </PopNewCardWrap>
-                        <div className="pop-new-card__categories categories">
-                            <p className="categories__p subttl">Категория</p>
-                            <div className="categories__themes">
-                                <div className="categories__theme _orange _active-category">
-                                    <p className="_orange">Web Design</p>
-                                </div>
+                        <PopNewCardCategories>
+                            <PopNewCardCategoriesPSubTitle>Категория</PopNewCardCategoriesPSubTitle>
+                            <PopNewCardCategoriesThemes>
+                                <PopNewCardCategoriesTheme>
+                                    <p>Web Design</p>
+                                </PopNewCardCategoriesTheme>
                                 <div className="categories__theme _green">
                                     <p className="_green">Research</p>
                                 </div>
                                 <div className="categories__theme _purple">
                                     <p className="_purple">Copywriting</p>
                                 </div>
-                            </div>
-                        </div>
-                        <button className="form-new__create _hover01" id="btnCreate">Создать задачу</button>
+                            </PopNewCardCategoriesThemes>
+                        </PopNewCardCategories>
+                        <FormNewCreate>Создать задачу</FormNewCreate>
                     </PopNewCardContent>
                 </PopNewCardBlock>
             </PopNewCardContainer>

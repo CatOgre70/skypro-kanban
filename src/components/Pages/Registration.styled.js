@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 export const ContainerSignUp = styled.div`
     display: block;
@@ -106,12 +107,31 @@ export const ModalBtnSignupEnter = styled.button`
 `;
 
 export const ModalFormGroup = styled.div`
-    a {
-        text-decoration: underline;
-    }
+    color: rgba(148, 166, 190, 0.4);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.14px;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
 `;
 
 export const ModalFormError = styled.div`
     color: red;
     margin: 8px 0;
+`;
+
+export const ModalFormGroupLink = styled(Link)`
+    color: rgba(148, 166, 190, 0.4);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.14px;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover {
+        color: #33399b;
+    }
 `;

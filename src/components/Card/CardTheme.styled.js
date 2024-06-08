@@ -39,8 +39,8 @@ export const CardTheme = styled.div`
 
 export const themeList = [
     {theme: "Web Design", themeStyle: "_orange"},
-    {theme: "Copywriting", themeStyle: "_purple"},
     {theme: "Research", themeStyle: "_green"},
+    {theme: "Copywriting", themeStyle: "_purple"},
 ];
 
 export function getThemeStyle(theme) {

@@ -54,7 +54,7 @@ export const PopNewCardClose = styled.div`
     right: 30px;
     color: #94A6BE;
     cursor: pointer;
-    :hover {
+    &:hover {
         color: #000000;
     }
 `;
@@ -94,14 +94,14 @@ export const FormNewInput = styled.input`
     font-size: 14px;
     line-height: 1;
     letter-spacing: -0.14px;
-    ::-moz-placeholder {
+    &::-moz-placeholder {
         font-weight: 400;
         font-size: 14px;
         line-height: 1px;
         color: #94A6BE;
         letter-spacing: -0.14px;
     }
-    ::placeholder {
+    &::placeholder {
         font-weight: 400;
         font-size: 14px;
         line-height: 1px;
@@ -121,14 +121,14 @@ export const FormNewArea = styled.textarea`
     font-size: 14px;
     line-height: 1;
     letter-spacing: -0.14px;
-    ::-moz-placeholder {
+    &::-moz-placeholder {
         font-weight: 400;
         font-size: 14px;
         line-height: 1px;
         color: #94A6BE;
         letter-spacing: -0.14px;
     }
-    ::placeholder {
+    &::placeholder {
         font-weight: 400;
         font-size: 14px;
         line-height: 1px;
@@ -138,4 +138,56 @@ export const FormNewArea = styled.textarea`
     max-width: 370px;
     margin-top: 14px;
     height: 200px;
+`;
+
+export const FormNewCreate = styled.button`
+    width: 132px;
+    height: 30px;
+    background-color: #565EEF;
+    border-radius: 4px;
+    border: 0;
+    outline: none;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    color: #FFFFFF;
+    float: right;
+    &:hover {
+        background-color: #33399b;
+    }
+`;
+
+export const PopNewCardCategories = styled.div`
+    margin-bottom: 20px;
+`;
+
+export const PopNewCardCategoriesPSubTitle = styled.p`
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 14px;
+`;
+
+export const PopNewCardCategoriesThemes = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+`;
+
+export const PopNewCardCategoriesTheme = styled.div`
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    padding: 8px 20px;
+    border-radius: 24px;
+    margin-right: 7px;
+    opacity: 0.4;
+    p {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 14px;
+        white-space: nowrap;
+    }
 `;
