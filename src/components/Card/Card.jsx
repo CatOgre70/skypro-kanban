@@ -13,7 +13,7 @@ import {Link} from "react-router-dom";
 import {AppRoutes, getThemeStyle} from "../../data.js";
 import {dateToString} from "../../date-processing.js";
 
-const Card = ({topic, title, date, id}) => (
+const Card = ({topic, title, date}) => (
     <CardsItem>
         <CardsCard>
             <CardGroup>
