@@ -5,15 +5,20 @@ import {ru} from "date-fns/locale";
 import {CalendarBlock, SelectedDay, TodayButton} from "./CalendarNew.styled.js";
 import {dateToStringOnlyDate} from "../../date-processing.js";
 
-function CalendarNew() {
+function CalendarNew({setSelectedDay}) {
 
     const today = new Date();
     const [month, setMonth] = useState(today);
     const [selected, setSelected] = useState(today);
 
     useEffect(() => {
-        // Поместить selected в контекст диалогового окна
-    }, [selected]);
+        if(selected) {
+            let selectedDate = new Date(selected.getFullYear(), selected.getMonth(), selected.getDate(), 12, 0, 0, 0);
+            setSelectedDay(selectedDate);
+        } else {
+            setSelectedDay(null);
+        }
+    }, [selected, setSelectedDay]);
 
     return (
         <>

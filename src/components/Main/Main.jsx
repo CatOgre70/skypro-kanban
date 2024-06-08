@@ -5,6 +5,7 @@ import {ContainerStyled, MainBlock, MainContent, MainStyled} from "./Main.styled
 import {getTaskList} from "../../api.js";
 import ShowMessageWindow from "./UserMessageWindow.jsx";
 import {UserContext} from "../../contexts/user.js";
+import {CardsContext} from "../../contexts/cards.js";
 
 function Main() {
 
@@ -12,7 +13,7 @@ function Main() {
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
-    const [cards, setCards] = useState([]);
+    const {cards, setCards} = useContext(CardsContext);
 
     useEffect(() => {
         setIsLoading(true);

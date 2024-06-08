@@ -191,3 +191,9 @@ export const PopNewCardCategoriesTheme = styled.div`
         white-space: nowrap;
     }
 `;
+
+export const PopNewCardError = styled.div`
+    color: red;
+    margin-top: 30px;
+    margin-bottom: 0;
+`;
