@@ -26,7 +26,7 @@ function Main() {
             setIsError(true);
             setErrorMessage(error.message);
         });
-    }, [user?.token]);
+    }, [setCards, user?.token]);
 
     return (
         <MainStyled>

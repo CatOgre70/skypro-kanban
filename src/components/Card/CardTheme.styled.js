@@ -1,23 +1,5 @@
 import styled from "styled-components";
-
-export const themeStyles = {
-    _purple: {
-        backgroundColor: "#e9d4ff",
-        color: "#9a48f1",
-    },
-    _orange: {
-        backgroundColor: "#ffe4c2",
-        color: "#ff6d00",
-    },
-    _green: {
-        backgroundColor: "#b4fdd1",
-        color: "#06b16e",
-    },
-    _gray: {
-        backgroundColor: "#94a6be",
-        color: "#ffffff",
-    },
-}
+import {themeStyles} from "../../data.js";
 
 export const ThemeText = styled.p`
     font-size: 10px;
@@ -36,18 +18,3 @@ export const CardTheme = styled.div`
         color: ${({ $themeColor }) => themeStyles[$themeColor]?.color || "#06b16e"};
     }
 `;
-
-export const themeList = [
-    {theme: "Web Design", themeStyle: "_orange"},
-    {theme: "Research", themeStyle: "_green"},
-    {theme: "Copywriting", themeStyle: "_purple"},
-];
-
-export function getThemeStyle(theme) {
-    for(let themeName of themeList) {
-        if (themeName.theme === theme) {
-            return themeName.themeStyle;
-        }
-    }
-    return "_gray";
-}

@@ -1,4 +1,4 @@
-import {CardTheme, getThemeStyle, ThemeText} from "./CardTheme.styled.js";
+import {CardTheme, ThemeText} from "./CardTheme.styled.js";
 import {
     CardBtn, CardBtnDiv,
     CardContent,
@@ -10,10 +10,10 @@ import {
     CardTitle
 } from "./Card.styled.js";
 import {Link} from "react-router-dom";
-import {AppRoutes} from "../../data.js";
+import {AppRoutes, getThemeStyle} from "../../data.js";
 import {dateToString} from "../../date-processing.js";
 
-const Card = ({topic, title, date}) => (
+const Card = ({topic, title, date, id}) => (
     <CardsItem>
         <CardsCard>
             <CardGroup>

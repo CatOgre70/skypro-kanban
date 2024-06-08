@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {themeStyles} from "../../../data.js";
 
 export const PopNewCardStyled = styled.div`
     width: 100%;
@@ -183,12 +184,18 @@ export const PopNewCardCategoriesTheme = styled.div`
     padding: 8px 20px;
     border-radius: 24px;
     margin-right: 7px;
-    opacity: 0.4;
     p {
         font-size: 14px;
         font-weight: 600;
         line-height: 14px;
         white-space: nowrap;
+        color: ${({ $themeColor }) => themeStyles[$themeColor]?.color || "#06b16e"};
+    }
+    color: ${({ $themeColor }) => themeStyles[$themeColor]?.color || "#06b16e"};
+    background-color: ${({ $themeColor }) => themeStyles[$themeColor]?.backgroundColor || "#b4fdd1"};
+    opacity: ${({ $themeActive }) => $themeActive ? "1.0" : "0.4"};
+    &:hover {
+        cursor: pointer;
     }
 `;
 

@@ -1,4 +1,4 @@
-import {AppRoutes} from "../../../data.js";
+import {AppRoutes, getThemeStyle, themeList} from "../../../data.js";
 import CalendarNew from "../../Calendar/CalendarNew.jsx";
 import {
     FormNewArea,
@@ -41,8 +41,28 @@ function PopNewCard() {
         navigate(AppRoutes.HOME);
     }
 
-    const onClickSubmit = () => {
+    function handleClick(event) {
+        let newTaskCategory = "";
+        switch(event.currentTarget.id){
+            case "0": {
+                newTaskCategory = themeList[0].theme;
+                break;
+            }
+            case "1": {
+                newTaskCategory = themeList[1].theme;
+                break;
+            }
+            case "2": {
+                newTaskCategory = themeList[2].theme;
+                break;
+            }
+        }
+        if (newTaskCategory !== taskCategory) {
+            setTaskCategory(newTaskCategory);
+        }
+    }
 
+    const onClickSubmit = () => {
         const newTask = {
             title: taskName.trim(),
             topic: taskCategory,
@@ -60,10 +80,15 @@ function PopNewCard() {
         if(newTask.date === null) {
             delete newTask.date;
         }
+        if(newTask.category === null) {
+            delete newTask.category;
+        }
 
         setIsError(false);
         createTask(user.token, newTask).then((result) => {
             setCards(result.tasks);
+            setIsError(false);
+            setErrorMessage("");
             navigate(AppRoutes.HOME);
         }).catch((error) => {
             setIsError(true);
@@ -104,15 +129,18 @@ function PopNewCard() {
                         <PopNewCardCategories>
                             <PopNewCardCategoriesPSubTitle>Категория</PopNewCardCategoriesPSubTitle>
                             <PopNewCardCategoriesThemes>
-                                <PopNewCardCategoriesTheme>
-                                    <p>Web Design</p>
-                                </PopNewCardCategoriesTheme>
-                                <div className="categories__theme _green">
-                                    <p className="_green">Research</p>
-                                </div>
-                                <div className="categories__theme _purple">
-                                    <p className="_purple">Copywriting</p>
-                                </div>
+                                {themeList.map((t, index) => (
+                                     <PopNewCardCategoriesTheme
+                                            key={index.toString()}
+                                            id={index.toString()}
+                                            $themeColor={getThemeStyle(t.theme)}
+                                            $themeActive={taskCategory === t.theme}
+                                            onClick = {(e) => handleClick(e)}
+                                     >
+                                            <p>{t.theme}</p>
+                                     </PopNewCardCategoriesTheme>
+
+                                ))}
                             </PopNewCardCategoriesThemes>
                         </PopNewCardCategories>
                         <FormNewCreate onClick={onClickSubmit}>Создать задачу</FormNewCreate>
