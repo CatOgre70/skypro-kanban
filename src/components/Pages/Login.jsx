@@ -7,7 +7,7 @@ import {
     ModalInput,
     ModalTitleH2
 } from "./Login.styled.js";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {AppRoutes} from "../../data.js";
 import {useContext, useState} from "react";
 import {userLogin} from "../../authapi.js";

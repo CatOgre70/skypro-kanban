@@ -8,7 +8,7 @@ import {
     ModalFormError, ModalFormGroupLink
 } from "./Registration.styled.js";
 import {AppRoutes} from "../../data.js";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useContext, useState} from "react";
 import {createUser} from "../../authapi.js";
 import {UserContext} from "../../contexts/user.js";
