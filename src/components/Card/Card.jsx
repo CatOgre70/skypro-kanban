@@ -1,4 +1,4 @@
-import {CardTheme, getThemeStyle, ThemeText} from "./CardTheme.styled.js";
+import {CardTheme, ThemeText} from "./CardTheme.styled.js";
 import {
     CardBtn, CardBtnDiv,
     CardContent,
@@ -10,14 +10,15 @@ import {
     CardTitle
 } from "./Card.styled.js";
 import {Link} from "react-router-dom";
-import {AppRoutes} from "../../data.js";
+import {AppRoutes, getThemeStyle} from "../../data.js";
+import {dateToString} from "../../date-processing.js";
 
-const Card = ({theme, title, date}) => (
+const Card = ({topic, title, date}) => (
     <CardsItem>
         <CardsCard>
             <CardGroup>
-                <CardTheme $themeColor={getThemeStyle(theme)}>
-                    <ThemeText>{theme}</ThemeText>
+                <CardTheme $themeColor={getThemeStyle(topic)}>
+                    <ThemeText>{topic}</ThemeText>
                 </CardTheme>
                 <Link to={AppRoutes.EDIT_CARD}>
                     <CardBtn>
@@ -28,9 +29,7 @@ const Card = ({theme, title, date}) => (
                 </Link>
             </CardGroup>
             <CardContent>
-                <a href="" target="_blank">
-                    <CardTitle>{title}</CardTitle>
-                </a>
+                <CardTitle>{title}</CardTitle>
                 <CardDate>
                     <CardDateImage xmlns="http://www.w3.org/2000/svg" width="13" height="13"
                          viewBox="0 0 13 13" fill="none">
@@ -50,7 +49,7 @@ const Card = ({theme, title, date}) => (
                             </clipPath>
                         </defs>
                     </CardDateImage>
-                    <CardDateParagraph>{date}</CardDateParagraph>
+                    <CardDateParagraph>{dateToString(date)}</CardDateParagraph>
                 </CardDate>
             </CardContent>
         </CardsCard>

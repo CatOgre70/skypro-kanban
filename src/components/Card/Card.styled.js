@@ -72,7 +72,7 @@ export const CardDateImage = styled.svg`
     width: 13px;
 `;
 
-export const CardDate = styled.p`
+export const CardDate = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;

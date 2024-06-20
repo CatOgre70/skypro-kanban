@@ -25,3 +25,8 @@ export const MainContent = styled.div`
 export const DataIsLoading = styled.div`
     font-size: 32px;
 `;
+
+export const DataError = styled.div`
+    font-size: 32px;
+    color: red;
+`;

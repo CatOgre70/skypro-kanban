@@ -3,13 +3,13 @@ import Main from "../Main/Main.jsx";
 import {Outlet} from "react-router-dom";
 
 
-const HomePage = ({cards}) => {
+const HomePage = () => {
 
 
     return(
     <>
         <Header />
-        <Main cards={cards}/>
+        <Main />
         <Outlet />
     </>
     );

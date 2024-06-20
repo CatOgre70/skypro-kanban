@@ -1,49 +1,154 @@
-import Calendar from "../../Calendar/Calendar.jsx";
-import {Link} from "react-router-dom";
-import {AppRoutes} from "../../../data.js";
+import {AppRoutes, getThemeStyle, themeList} from "../../../data.js";
+import CalendarNew from "../../Calendar/CalendarNew.jsx";
+import {
+    FormNewArea,
+    FormNewBlock,
+    FormNewCreate,
+    FormNewInput,
+    FormNewSubTitle,
+    PopNewCardBlock,
+    PopNewCardCategories,
+    PopNewCardCategoriesPSubTitle,
+    PopNewCardCategoriesTheme,
+    PopNewCardCategoriesThemes,
+    PopNewCardClose,
+    PopNewCardContainer,
+    PopNewCardContent, PopNewCardError,
+    PopNewCardForm,
+    PopNewCardStyled,
+    PopNewCardTitle,
+    PopNewCardWrap
+} from "./PopNewCard.styled.js";
+import {useNavigate} from "react-router-dom";
+import {useContext, useState} from "react";
+import {createTask} from "../../../api.js";
+import {UserContext} from "../../../contexts/user.js";
+import {CardsContext} from "../../../contexts/cards.js";
 
 function PopNewCard() {
+
+    const navigate = useNavigate();
+    const [taskName, setTaskName] = useState("");
+    const [taskDescription, setTaskDescription] = useState("");
+    const [taskCategory, setTaskCategory] = useState("Web Design");
+    const [taskDate, setTaskDate] = useState(new Date());
+    const {user} = useContext(UserContext);
+    const {setCards} = useContext(CardsContext);
+    const [isError, setIsError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    function onClick() {
+        navigate(AppRoutes.HOME);
+    }
+
+    function handleClick(event) {
+        let newTaskCategory = "";
+        switch(event.currentTarget.id){
+            case "0": {
+                newTaskCategory = themeList[0].theme;
+                break;
+            }
+            case "1": {
+                newTaskCategory = themeList[1].theme;
+                break;
+            }
+            case "2": {
+                newTaskCategory = themeList[2].theme;
+                break;
+            }
+        }
+        if (newTaskCategory !== taskCategory) {
+            setTaskCategory(newTaskCategory);
+        }
+    }
+
+    const onClickSubmit = () => {
+        const newTask = {
+            title: taskName.trim(),
+            topic: taskCategory,
+            status: "Без статуса",
+            description: taskDescription.trim(),
+            date: taskDate,
+        }
+
+        if(newTask.title === "") {
+            delete newTask.title;
+        }
+        if(newTask.description === "") {
+            delete newTask.description;
+        }
+        if(newTask.date === null) {
+            delete newTask.date;
+        }
+        if(newTask.category === null) {
+            delete newTask.category;
+        }
+
+        setIsError(false);
+        createTask(user.token, newTask).then((result) => {
+            setCards(result.tasks);
+            setIsError(false);
+            setErrorMessage("");
+            navigate(AppRoutes.HOME);
+        }).catch((error) => {
+            setIsError(true);
+            setErrorMessage(error.message);
+        });
+    }
+
     return (
-        <div className="pop-new-card" id="popNewCard">
-            <div className="pop-new-card__container">
-                <div className="pop-new-card__block">
-                    <div className="pop-new-card__content">
-                        <h3 className="pop-new-card__ttl">Создание задачи</h3>
-                        <Link to={AppRoutes.HOME} className="pop-new-card__close">&#10006;</Link>
-                        <div className="pop-new-card__wrap">
-                            <form className="pop-new-card__form form-new" id="formNewCard" action="#">
-                                <div className="form-new__block">
-                                    <label htmlFor="formTitle" className="subttl">Название задачи</label>
-                                    <input className="form-new__input" type="text" name="name" id="formTitle"
-                                           placeholder="Введите название задачи..." autoFocus/>
-                                </div>
-                                <div className="form-new__block">
-                                    <label htmlFor="textArea" className="subttl">Описание задачи</label>
-                                    <textarea className="form-new__area" name="text" id="textArea"
-                                              placeholder="Введите описание задачи..."></textarea>
-                                </div>
-                            </form>
-                            <Calendar />
-                        </div>
-                        <div className="pop-new-card__categories categories">
-                            <p className="categories__p subttl">Категория</p>
-                            <div className="categories__themes">
-                                <div className="categories__theme _orange _active-category">
-                                    <p className="_orange">Web Design</p>
-                                </div>
-                                <div className="categories__theme _green">
-                                    <p className="_green">Research</p>
-                                </div>
-                                <div className="categories__theme _purple">
-                                    <p className="_purple">Copywriting</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button className="form-new__create _hover01" id="btnCreate">Создать задачу</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <PopNewCardStyled>
+            <PopNewCardContainer>
+                <PopNewCardBlock>
+                    <PopNewCardContent>
+                        <PopNewCardTitle>Создание задачи</PopNewCardTitle>
+                        <PopNewCardClose onClick={onClick}>&#10006;</PopNewCardClose>
+                        <PopNewCardWrap>
+                            <PopNewCardForm>
+                                <FormNewBlock>
+                                    <FormNewSubTitle>Название задачи</FormNewSubTitle>
+                                    <FormNewInput
+                                        value={taskName}
+                                        onChange={(e) => setTaskName(e.target.value)}
+                                        type="text"
+                                        placeholder="Введите название задачи..."
+                                        autoFocus
+                                    />
+                                </FormNewBlock>
+                                <FormNewBlock>
+                                    <FormNewSubTitle>Описание задачи</FormNewSubTitle>
+                                    <FormNewArea
+                                        value={taskDescription}
+                                        onChange={(e) => setTaskDescription(e.target.value)}
+                                        placeholder="Введите описание задачи...">
+                                    </FormNewArea>
+                                </FormNewBlock>
+                            </PopNewCardForm>
+                            <CalendarNew setSelectedDay={setTaskDate}/>
+                        </PopNewCardWrap>
+                        <PopNewCardCategories>
+                            <PopNewCardCategoriesPSubTitle>Категория</PopNewCardCategoriesPSubTitle>
+                            <PopNewCardCategoriesThemes>
+                                {themeList.map((t, index) => (
+                                     <PopNewCardCategoriesTheme
+                                            key={index.toString()}
+                                            id={index.toString()}
+                                            $themeColor={getThemeStyle(t.theme)}
+                                            $themeActive={taskCategory === t.theme}
+                                            onClick = {(e) => handleClick(e)}
+                                     >
+                                            <p>{t.theme}</p>
+                                     </PopNewCardCategoriesTheme>
+
+                                ))}
+                            </PopNewCardCategoriesThemes>
+                        </PopNewCardCategories>
+                        <FormNewCreate onClick={onClickSubmit}>Создать задачу</FormNewCreate>
+                    </PopNewCardContent>
+                    { isError && (<PopNewCardError>&#10006; Возникла ошибка: {errorMessage}</PopNewCardError>) }
+                </PopNewCardBlock>
+            </PopNewCardContainer>
+        </PopNewCardStyled>
     );
 
 }

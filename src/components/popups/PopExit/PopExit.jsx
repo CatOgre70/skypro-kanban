@@ -6,16 +6,17 @@ import {
     PopExitStyled,
     PopExitTitleH2
 } from './PopExit.styled.js';
-import {AppRoutes, isAuth, setIsAuth} from "../../../data.js";
+import {AppRoutes} from "../../../data.js";
 import {Link, useNavigate} from "react-router-dom";
+import {UserContext} from "../../../contexts/user.js";
+import {useContext} from "react";
 
 const PopExit = () => {
-
+    const {setUser} = useContext(UserContext);
     let navigate = useNavigate();
 
     function onClickExit() {
-        setIsAuth(false);
-        console.log(isAuth);
+        setUser(null);
         navigate(AppRoutes.LOGIN);
     }
 

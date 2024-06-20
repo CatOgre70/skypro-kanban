@@ -105,6 +105,7 @@ export const PopUserSetTheme = styled.div`
 `;
 
 export const PopUserSetButton = styled.button`
+    margin-top: 48px;
     width: 72px;
     height: 30px;
     background: transparent;
