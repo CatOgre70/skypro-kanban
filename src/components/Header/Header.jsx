@@ -8,28 +8,35 @@ import {
     HeaderNav,
     HeaderStyled
 } from "./Header.styled.js";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {AppRoutes} from "../../data.js";
 
-const Header = ({onCardAdd}) => (
-    <HeaderStyled>
-        <HeaderContainer>
-            <HeaderBlock>
-                <div className="header__logo _show _light">
-                    <a href="" target="_self"><HeaderLogoImg src="/logo.png" alt="logo"/></a>
-                </div>
-                <HeaderLogoDark>
-                    <a href="" target="_self"><HeaderLogoImg src="/logo_dark.png" alt="logo"/></a>
-                </HeaderLogoDark>
-                <HeaderNav>
-                    <HeaderBtnMainNewHover01 id="btnMainNew" onClick={onCardAdd}>
-                        <Link to={AppRoutes.ADD_NEW_CARD}>Создать новую задачу</Link>
-                    </HeaderBtnMainNewHover01>
-                    <PopUser />
-                </HeaderNav>
-            </HeaderBlock>
-        </HeaderContainer>
-    </HeaderStyled>
-)
+const Header = () => {
+
+    const navigate = useNavigate();
+
+    function handleClick() {
+        navigate(AppRoutes.ADD_NEW_CARD);
+    }
+
+    return  <HeaderStyled>
+                <HeaderContainer>
+                    <HeaderBlock>
+                        <div className="header__logo _show _light">
+                            <a href="" target="_self"><HeaderLogoImg src="/logo.png" alt="logo"/></a>
+                        </div>
+                        <HeaderLogoDark>
+                            <a href="" target="_self"><HeaderLogoImg src="/logo_dark.png" alt="logo"/></a>
+                        </HeaderLogoDark>
+                        <HeaderNav>
+                            <HeaderBtnMainNewHover01 onClick={handleClick}>
+                                Создать новую задачу
+                            </HeaderBtnMainNewHover01>
+                            <PopUser/>
+                        </HeaderNav>
+                    </HeaderBlock>
+                </HeaderContainer>
+            </HeaderStyled>
+}
 
 export default Header;
