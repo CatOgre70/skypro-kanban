@@ -128,17 +128,19 @@ function PopNewCard() {
                         </PopNewCardWrap>
                         <PopNewCardCategories>
                             <PopNewCardCategoriesPSubTitle>Категория</PopNewCardCategoriesPSubTitle>
+                            <PopNewCardCategoriesThemes>
                                 {themeList.map((t, index) => (
                                      <PopNewCardCategoriesTheme
-                                            key={index.toString()}
-                                            id={index.toString()}
-                                            $themeColor={getThemeStyle(t.theme)}
-                                            $themeActive={taskCategory === t.theme}
-                                            onClick = {(e) => handleClick(e)}
+                                        key={index.toString()}
+                                        id={index.toString()}
+                                        $themeColor={getThemeStyle(t.theme)}
+                                        $themeActive={taskCategory === t.theme}
+                                        onClick = {(e) => handleClick(e)}
                                      >
                                         <p>{t.theme}</p>
                                      </PopNewCardCategoriesTheme>
                                 ))}
+                            </PopNewCardCategoriesThemes>
                         </PopNewCardCategories>
                         <FormNewCreate onClick={onClickSubmit}>Создать задачу</FormNewCreate>
                     </PopNewCardContent>
