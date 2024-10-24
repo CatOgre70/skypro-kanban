@@ -128,7 +128,6 @@ function PopNewCard() {
                         </PopNewCardWrap>
                         <PopNewCardCategories>
                             <PopNewCardCategoriesPSubTitle>Категория</PopNewCardCategoriesPSubTitle>
-                            <PopNewCardCategoriesThemes>
                                 {themeList.map((t, index) => (
                                      <PopNewCardCategoriesTheme
                                             key={index.toString()}
@@ -137,11 +136,9 @@ function PopNewCard() {
                                             $themeActive={taskCategory === t.theme}
                                             onClick = {(e) => handleClick(e)}
                                      >
-                                            <p>{t.theme}</p>
+                                        <p>{t.theme}</p>
                                      </PopNewCardCategoriesTheme>
-
                                 ))}
-                            </PopNewCardCategoriesThemes>
                         </PopNewCardCategories>
                         <FormNewCreate onClick={onClickSubmit}>Создать задачу</FormNewCreate>
                     </PopNewCardContent>
