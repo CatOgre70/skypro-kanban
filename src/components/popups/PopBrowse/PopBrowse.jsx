@@ -10,7 +10,7 @@ import {
     PopBrowseTopBlock
 } from "./PopBrowse.styled.js";
 
-function PopBrowse() {
+function PopBrowse({card}) {
     const [selectedDay, setSelectedDay] = useState(new Date());
     return (
             <PopBrowseStyled>
@@ -19,9 +19,9 @@ function PopBrowse() {
                         <PopBrowseContent>
                             <PopBrowseTopBlock>
                                 <PopBrowseTitle>Название задачи</PopBrowseTitle>
-                              <div className="categories__theme theme-top _orange _active-category">
-                                  <p className="_orange">Web Design</p>
-                              </div>
+                                <div className="categories__theme theme-top _orange _active-category">
+                                    <p className="_orange">Web Design</p>
+                                </div>
                             </PopBrowseTopBlock>
                           <div className="pop-browse__status status">
                               <p className="status__p subttl">Статус</p>

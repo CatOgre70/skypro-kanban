@@ -1,4 +1,3 @@
-import './App.css'
 import PopNewCard from "./components/popups/PopNewCard/PopNewCard.jsx";
 import PopExit from "./components/popups/PopExit/PopExit.jsx";
 import PopBrowse from "./components/popups/PopBrowse/PopBrowse.jsx";
@@ -14,6 +13,7 @@ import {deleteUserFromLocalStorage, getUserDataFromLocalStorage, saveUserToLocal
 import {useEffect, useState} from "react";
 import {UserContext} from "./contexts/user.js";
 import {CardsContext} from "./contexts/cards.js";
+import {GlobalStyle} from "./Global.styled.js";
 
 function App() {
 
@@ -31,6 +31,7 @@ function App() {
 
     return (
         <>
+            <GlobalStyle />
             <Wrapper>
                 <UserContext.Provider value={{user, setUser}}>
                     <CardsContext.Provider value={{cards, setCards}}>
