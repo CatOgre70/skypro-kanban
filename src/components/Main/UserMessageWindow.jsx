@@ -6,7 +6,7 @@ function ShowMessageWindow({ isError, errorMessage }) {
       Произошла ошибка: {errorMessage}. Попробуйте, пожалуйста, позже!
     </DataError>
   ) : (
-    <DataIsLoading>Данные загружаются...</DataIsLoading>
+    <DataIsLoading>Подождите, пожалуйста, данные загружаются...</DataIsLoading>
   );
 }
 
