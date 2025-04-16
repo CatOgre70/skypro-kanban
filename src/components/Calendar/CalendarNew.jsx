@@ -42,7 +42,7 @@ function CalendarNew({ setSelectedDay }) {
           mode="single"
           selected={selected}
           onSelect={setSelected}
-          captionLayout={"buttons"}
+          captionLayout={"label"}
           showOutsideDays={true}
           classNames={defaultStyles}
           fixedWeeks={true}
